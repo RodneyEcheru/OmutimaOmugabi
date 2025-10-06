@@ -3,42 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmutimaOmugabi - Information Village Limited Proposal</title>
+    <title>OmutimaOmugabi - Wall of Fame Platform Design</title>
 
-    <!-- Tailwind CSS via CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- GSAP Core & ScrollTrigger for Advanced Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Custom Tailwind Configuration -->
+    <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'civ-purple': '#6852a2',
-                        'civ-purple-dark': '#4a3771',
-                        'civ-purple-light': '#8b75c9',
-                        'civ-orange': '#faa92b',
-                        'civ-orange-dark': '#e89310',
-                        'civ-orange-light': '#fbc569',
+                        'omutima-purple': '#6852a2',
+                        'omutima-purple-dark': '#4a3771',
+                        'omutima-purple-light': '#8c7ab8',
+                        'omutima-orange': '#faa92b',
+                        'omutima-orange-dark': '#e89310',
+                        'omutima-orange-light': '#ffc165',
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'display': ['Space Grotesk', 'Inter', 'sans-serif'],
+                        'display': ['Space Grotesk', 'sans-serif'],
+                        'body': ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <style>
         * {
@@ -47,303 +49,15 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             background: #ffffff;
         }
 
-        /* Enhanced Animated Gradient Background */
-        .gradient-bg {
-            background: linear-gradient(135deg, #6852a2 0%, #4a3771 50%, #6852a2 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.1),
-                transparent
-            );
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #6852a2 0%, #faa92b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .animated-gradient-text {
-            background: linear-gradient(90deg, #6852a2, #faa92b, #6852a2);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: shine 3s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        /* Hero Pattern */
-        .hero-pattern {
-            background-color: #6852a2;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23faa92b' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        /* Simple Effective Glass Morphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-            box-shadow:
-                0 8px 32px 0 rgba(104, 82, 162, 0.25),
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
-        }
-
-        /* 3D Card Effect */
-        .card-3d {
-            transform-style: preserve-3d;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .card-3d:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
-        }
-
-        .card-3d-inner {
-            transform: translateZ(50px);
-        }
-
-        /* Smooth Hover Effects - Enhanced with Better Contrast */
-        .hover-lift {
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            border: 1.5px solid rgba(104, 82, 162, 0.12);
-            box-shadow:
-                0 4px 20px rgba(104, 82, 162, 0.08),
-                0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        /* White background only for non-gradient cards and non-translucent backgrounds */
-        .hover-lift:not(.gradient-bg):not([class*="bg-gradient"]):not([class*="bg-white/"]) {
-            background: #ffffff;
-        }
-
-        .hover-lift::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #6852a2, #faa92b);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: inherit;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        .hover-lift::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(250, 169, 43, 0.02) 0%,
-                rgba(104, 82, 162, 0.02) 100%
-            );
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-            border-radius: inherit;
-            z-index: -1;
-        }
-
-        .hover-lift:hover::before {
-            opacity: 1;
-        }
-
-        .hover-lift:hover::after {
-            opacity: 1;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow:
-                0 30px 60px rgba(104, 82, 162, 0.15),
-                0 15px 30px rgba(250, 169, 43, 0.08),
-                0 0 0 1px rgba(104, 82, 162, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 1);
-            border-color: rgba(104, 82, 162, 0.2);
-        }
-
-        /* Magnetic Button Effect */
-        .magnetic-btn {
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .magnetic-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px rgba(250, 169, 43, 0.4);
-        }
-
-        /* Animated Border */
-        .animated-border {
-            position: relative;
-            background: linear-gradient(135deg, #6852a2, #faa92b);
-            padding: 2px;
-            border-radius: 1.5rem;
-        }
-
-        .animated-border::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 1.5rem;
-            padding: 2px;
-            background: linear-gradient(135deg, #faa92b, #6852a2, #faa92b);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: borderRotate 3s linear infinite;
-        }
-
-        @keyframes borderRotate {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Floating Animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(-10px) rotate(-2deg); }
-        }
-
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Pulse Animation */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        .pulse-animation {
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        /* Particle Background */
-        .particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(250, 169, 43, 0.5);
-            border-radius: 50%;
-            animation: particleFloat 15s infinite;
-        }
-
-        @keyframes particleFloat {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
-        }
-
-        /* Section Divider */
-        .section-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #faa92b, transparent);
-        }
-
-        /* Enhanced Badge Styles */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            box-shadow:
-                0 4px 15px rgba(104, 82, 162, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .badge:hover {
-            transform: scale(1.05);
-            box-shadow:
-                0 6px 20px rgba(104, 82, 162, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        /* Enhanced Icon Containers */
-        .icon-gradient {
-            background: linear-gradient(135deg, #faa92b 0%, #ff8c42 100%);
-            padding: 1rem;
-            border-radius: 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow:
-                0 8px 25px rgba(250, 169, 43, 0.3),
-                inset 0 2px 0 rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .icon-gradient:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow:
-                0 12px 35px rgba(250, 169, 43, 0.4),
-                inset 0 2px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        /* Counter Styles */
-        .counter {
-            font-variant-numeric: tabular-nums;
-            font-family: 'Space Grotesk', sans-serif;
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
 
         /* Scroll Progress Bar */
@@ -358,43 +72,169 @@
             transition: width 0.1s ease;
         }
 
-        /* Reveal Animation Classes */
+        /* Hero Pattern */
+        .hero-pattern {
+            background-color: #6852a2;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23faa92b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #6852a2 0%, #faa92b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animated Gradient */
+        .animated-gradient {
+            background: linear-gradient(90deg, #6852a2, #faa92b, #6852a2);
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            border-radius: 40px;
+            border: 12px solid #1a1a1a;
+            background: #fff;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: #1a1a1a;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(104, 82, 162, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(104, 82, 162, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(104, 82, 162, 0.2);
+        }
+
+        /* Story Card Preview */
+        .story-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Color Palette Cards */
+        .color-card {
+            height: 150px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Micro-animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(250, 169, 43, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(250, 169, 43, 0.8); }
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        /* Badge */
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .badge-tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Platform Preview Screen */
+        .platform-screen {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Icon Container */
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .icon-container:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        /* Reveal animations */
         .reveal {
             opacity: 1;
             transform: none;
-        }
-
-        .reveal-left {
-            opacity: 1;
-            transform: none;
-        }
-
-        .reveal-right {
-            opacity: 1;
-            transform: none;
-        }
-
-        .reveal-scale {
-            opacity: 1;
-            transform: none;
-        }
-
-        /* Parallax Layers */
-        .parallax-slow {
-            will-change: transform;
-        }
-
-        .parallax-fast {
-            will-change: transform;
-        }
-
-        /* Smooth Navbar */
-        .navbar-hidden {
-            transform: translateY(-100%);
-        }
-
-        nav {
-            transition: transform 0.3s ease-in-out, background 0.3s ease;
         }
 
         /* Custom Scrollbar */
@@ -414,737 +254,658 @@
         ::-webkit-scrollbar-thumb:hover {
             background: linear-gradient(180deg, #4a3771, #e89310);
         }
-
-        /* Enhanced Glow Effects */
-        .glow {
-            box-shadow: 0 0 25px rgba(250, 169, 43, 0.6), 0 0 50px rgba(104, 82, 162, 0.3);
-        }
-
-        .glow-hover {
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .glow-hover:hover {
-            box-shadow:
-                0 0 40px rgba(250, 169, 43, 0.8),
-                0 0 80px rgba(104, 82, 162, 0.5),
-                0 20px 60px rgba(0, 0, 0, 0.2);
-            transform: translateY(-4px);
-        }
-
-        /* Text Shadow Effects */
-        .text-glow {
-            text-shadow: 0 0 20px rgba(250, 169, 43, 0.5);
-        }
-
-        /* Premium Liquid Glass Cards */
-        .liquid-glass {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            box-shadow:
-                0 8px 32px 0 rgba(104, 82, 162, 0.3),
-                inset 0 2px 4px 0 rgba(255, 255, 255, 0.5),
-                inset 0 -2px 4px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        /* Enhanced gradient cards with liquid effect */
-        .gradient-card {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .gradient-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0%,
-                transparent 50%,
-                rgba(255, 255, 255, 0.1) 100%
-            );
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .gradient-card:hover::before {
-            opacity: 1;
-        }
-
-        .gradient-card::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.15) 0%,
-                transparent 70%
-            );
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .gradient-card:hover::after {
-            width: 200%;
-            height: 200%;
-        }
     </style>
 </head>
-<body class="antialiased">
-
+<body class="font-body">
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-3">
-                    <div class="h-12 w-12 rounded-full gradient-bg flex items-center justify-center pulse-animation">
-                        <i class="fas fa-heart text-white text-xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold font-display text-civ-purple">OmutimaOmugabi</h1>
-                        <p class="text-xs text-gray-600">by Information Village Limited</p>
-                    </div>
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-omutima-purple to-omutima-orange flex items-center justify-center">
+                    <i class="fas fa-heart text-white text-xl"></i>
                 </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#vision" class="text-gray-700 hover:text-civ-purple transition font-medium">Vision</a>
-                    <a href="#capabilities" class="text-gray-700 hover:text-civ-purple transition font-medium">Capabilities</a>
-                    <a href="#portfolio" class="text-gray-700 hover:text-civ-purple transition font-medium">Portfolio</a>
-                    <a href="#approach" class="text-gray-700 hover:text-civ-purple transition font-medium">Approach</a>
-                    <a href="#contact" class="text-gray-700 hover:text-civ-purple transition font-medium">Contact</a>
+                <div>
+                    <div class="font-display font-bold text-xl text-omutima-purple">OmutimaOmugabi</div>
+                    <div class="text-xs text-gray-500">Wall of Fame Platform</div>
                 </div>
-                <a href="#contact" class="magnetic-btn bg-civ-orange hover:bg-civ-orange-dark text-white px-6 py-3 rounded-full font-semibold">
-                    Get Started
-                </a>
             </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#vision" class="text-gray-700 hover:text-omutima-purple transition font-medium">Vision</a>
+                <a href="#features" class="text-gray-700 hover:text-omutima-purple transition font-medium">Features</a>
+                <a href="#design" class="text-gray-700 hover:text-omutima-purple transition font-medium">Design</a>
+                <a href="#mockups" class="text-gray-700 hover:text-omutima-purple transition font-medium">Mockups</a>
+            </div>
+            <a href="#contact" class="bg-omutima-orange hover:bg-omutima-orange-dark text-white px-6 py-3 rounded-full font-semibold transition">
+                Let's Build This
+            </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-pattern pt-32 pb-20 text-white relative overflow-hidden min-h-screen flex items-center">
-        <!-- Particles Background -->
-        <div class="particles">
-            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
-            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
-            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-            <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
-            <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
-            <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="reveal-left">
-                    <div class="badge glass text-civ-orange-light mb-6 glow">
-                        <i class="fas fa-star mr-2"></i> Cultural Technology Specialists
-                    </div>
-                    <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 leading-tight">
-                        Celebrating Uganda's<br/>
-                        <span class="animated-gradient-text">Generous Spirit</span>
-                    </h1>
-                    <p class="text-xl mb-8 text-purple-100 leading-relaxed">
-                        A digital Wall of Fame preserving acts of kindness, care, and community spirit.
-                        More than an app—it's a living archive of Ubuntu philosophy in action.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#capabilities" class="magnetic-btn bg-civ-orange hover:bg-civ-orange-dark text-white px-8 py-4 rounded-full font-semibold shadow-lg glow-hover">
-                            <i class="fas fa-rocket mr-2"></i> See Our Capabilities
-                        </a>
-                        <a href="#portfolio" class="magnetic-btn glass text-white px-8 py-4 rounded-full font-semibold border-2 border-white/30">
-                            <i class="fas fa-briefcase mr-2"></i> View Portfolio
-                        </a>
-                    </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-5xl mx-auto text-center">
+                <div class="badge-tag bg-white/20 backdrop-blur-sm border border-white/30 text-white mb-8 mx-auto">
+                    <i class="fas fa-star"></i>
+                    <span>Platform Design Showcase</span>
                 </div>
 
-                <div class="relative reveal-right">
-                    <div class="float-animation">
-                        <div class="liquid-glass rounded-3xl p-8 border-2 border-white/30 hover-lift">
-                            <div class="grid grid-cols-2 gap-6">
-                                <div class="text-center reveal-scale">
-                                    <div class="text-5xl mb-2"><i class="fas fa-users text-civ-orange text-glow"></i></div>
-                                    <div class="text-4xl font-bold font-display counter">10</div>
-                                    <div class="text-sm text-purple-200">Million+ Users</div>
-                                </div>
-                                <div class="text-center reveal-scale">
-                                    <div class="text-5xl mb-2"><i class="fas fa-globe text-civ-orange text-glow"></i></div>
-                                    <div class="text-4xl font-bold font-display counter">4</div>
-                                    <div class="text-sm text-purple-200">Countries</div>
-                                </div>
-                                <div class="text-center reveal-scale">
-                                    <div class="text-5xl mb-2"><i class="fas fa-building text-civ-orange text-glow"></i></div>
-                                    <div class="text-4xl font-bold font-display counter">5</div>
-                                    <div class="text-sm text-purple-200">Banking Clients</div>
-                                </div>
-                                <div class="text-center reveal-scale">
-                                    <div class="text-5xl mb-2"><i class="fas fa-calendar text-civ-orange text-glow"></i></div>
-                                    <div class="text-4xl font-bold font-display counter">9</div>
-                                    <div class="text-sm text-purple-200">Years Excellence</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 leading-tight">
+                    Celebrating Uganda's
+                    <span class="text-omutima-orange block mt-2">Generous Spirit</span>
+                </h1>
 
-        <!-- Decorative Elements -->
-        <div class="absolute top-20 right-10 opacity-20 parallax-slow">
-            <i class="fas fa-heart text-9xl text-civ-orange"></i>
-        </div>
-        <div class="absolute bottom-20 left-10 opacity-20 parallax-fast">
-            <i class="fas fa-hands-helping text-9xl text-civ-orange"></i>
-        </div>
-    </section>
-
-    <!-- Vision Statement -->
-    <section id="vision" class="py-20 bg-gray-50 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
-                    <span class="animated-gradient-text">Ubuntu Philosophy</span> + International Excellence
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                    "I am what I am because of who we all are" — We blend authentic African generosity
-                    traditions with banking-grade technical standards proven across 4 countries.
+                <p class="text-xl md:text-2xl mb-12 text-purple-100 max-w-3xl mx-auto">
+                    A digital Wall of Fame preserving acts of kindness, care, and community spirit.
+                    Ubuntu philosophy meets modern technology.
                 </p>
-            </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift reveal-scale">
-                    <div class="h-20 w-20 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6 pulse-animation">
-                        <i class="fas fa-heart text-4xl text-civ-purple"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold font-display mb-4 text-civ-purple">Cultural Preservation</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Digital storytelling that honors oral traditions, celebrates non-monetary giving
-                        (time, love, labor, energy, talent), and creates intergenerational knowledge transfer.
-                    </p>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift reveal-scale">
-                    <div class="h-20 w-20 rounded-full bg-civ-orange/10 flex items-center justify-center mb-6 pulse-animation">
-                        <i class="fas fa-shield-alt text-4xl text-civ-orange"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold font-display mb-4 text-civ-purple">Enterprise Security</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Banking-grade security proven through UK FSA compliance, multi-factor authentication,
-                        end-to-end encryption, and GDPR adherence across international deployments.
-                    </p>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift reveal-scale">
-                    <div class="h-20 w-20 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6 pulse-animation">
-                        <i class="fas fa-chart-line text-4xl text-civ-purple"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold font-display mb-4 text-civ-purple">National Scale</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Proven delivery of platforms serving millions of users with 99.9% uptime,
-                        optimized for low-bandwidth rural access and cross-cultural deployment.
-                    </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#features" class="bg-omutima-orange hover:bg-omutima-orange-dark text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center gap-2 pulse-glow">
+                        <i class="fas fa-rocket"></i>
+                        Explore Platform Features
+                    </a>
+                    <a href="#design" class="bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/50 text-white px-8 py-4 rounded-full font-bold text-lg transition">
+                        View Design Concepts
+                    </a>
                 </div>
             </div>
         </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-omutima-orange/20 rounded-full blur-xl float-animation"></div>
+        <div class="absolute bottom-20 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl float-animation" style="animation-delay: 1s;"></div>
     </section>
 
-    <!-- Unique Advantages -->
-    <section id="capabilities" class="py-20 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Vision Section -->
+    <section id="vision" class="py-20 bg-gradient-to-b from-white to-purple-50">
+        <div class="container mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <div class="badge bg-civ-purple/10 text-civ-purple mb-4 mx-auto">
-                    <i class="fas fa-trophy mr-2"></i> Our Competitive Edge
+                <div class="badge-tag bg-omutima-purple/10 text-omutima-purple mb-4 mx-auto">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Our Vision for OmutimaOmugabi</span>
                 </div>
-                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6 text-civ-purple">
-                    The ONLY Ugandan Firm With
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
+                    <span class="gradient-text">Living Archive</span> of Generosity
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Unmatched combination of cultural sensitivity and international technical excellence
+                    More than an app—it's a movement celebrating Ubuntu philosophy through digital storytelling
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="gradient-bg gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
-                    <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-2">International Banking Compliance</h3>
-                    <p class="text-purple-100">UK FSA + East African regulations mastery</p>
-                </div>
-
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
-                    <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-2">Multi-Country Deployment</h3>
-                    <p class="text-orange-100">4 countries proven track record</p>
-                </div>
-
-                <div class="gradient-bg gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
-                    <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-2">National-Scale Platforms</h3>
-                    <p class="text-purple-100">Millions of users served successfully</p>
-                </div>
-
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
-                    <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-2">Government Credentials</h3>
-                    <p class="text-orange-100">Uganda Ministry of ICT transformation</p>
-                </div>
-
-                <div class="gradient-bg gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
-                    <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-2">Cultural Technology Specialization</h3>
-                    <p class="text-purple-100">Ubuntu philosophy integration expertise</p>
-                </div>
-
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
-                    <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-2">9+ Years Excellence</h3>
-                    <p class="text-orange-100">Consistent on-time delivery since 2015</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Showcase -->
-    <section id="portfolio" class="py-20 bg-gray-50 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
-                    Proven <span class="animated-gradient-text">Track Record</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Real projects, real impact, real results across healthcare, banking, and government sectors
-                </p>
-            </div>
-
-            <div class="space-y-8">
-                <!-- Project 1: International Banking -->
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift reveal-left">
-                    <div class="md:flex">
-                        <div class="md:w-1/3 bg-gradient-to-br from-blue-500 to-blue-700 p-12 flex items-center justify-center relative overflow-hidden">
-                            <i class="fas fa-university text-9xl text-white opacity-30"></i>
-                            <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
-                        </div>
-                        <div class="md:w-2/3 p-8 md:p-12">
-                            <div class="badge bg-blue-100 text-blue-700 mb-4">
-                                <i class="fas fa-globe mr-2"></i> International Banking
-                            </div>
-                            <h3 class="text-3xl font-bold font-display mb-4 text-civ-purple">Multi-Country Banking Systems</h3>
-                            <p class="text-gray-600 mb-6 text-lg">
-                                Deployed secure banking interfaces across Uganda, Kenya, Senegal, and United Kingdom
-                                serving 5+ core banking institutions with UK FSA compliance.
-                            </p>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold font-display text-civ-purple counter">40</div>
-                                    <div class="text-sm text-gray-600">% Performance Boost</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold font-display text-civ-purple counter">4</div>
-                                    <div class="text-sm text-gray-600">Countries</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold font-display text-civ-purple counter">5</div>
-                                    <div class="text-sm text-gray-600">Banks</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold font-display text-civ-purple">99.5%</div>
-                                    <div class="text-sm text-gray-600">Uptime</div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="feature-card text-center reveal">
+                    <div class="icon-container bg-gradient-to-br from-omutima-purple to-omutima-purple-dark text-white mx-auto mb-6">
+                        <i class="fas fa-users"></i>
                     </div>
-                </div>
-
-                <!-- Project 2: Healthcare -->
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift reveal-right">
-                    <div class="md:flex md:flex-row-reverse">
-                        <div class="md:w-1/3 bg-gradient-to-br from-green-500 to-green-700 p-12 flex items-center justify-center relative overflow-hidden">
-                            <i class="fas fa-hospital text-9xl text-white opacity-30"></i>
-                            <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
-                        </div>
-                        <div class="md:w-2/3 p-8 md:p-12">
-                            <div class="badge bg-green-100 text-green-700 mb-4">
-                                <i class="fas fa-heartbeat mr-2"></i> National Healthcare
-                            </div>
-                            <h3 class="text-3xl font-bold font-display mb-4 text-civ-purple">Ethiopia Health-Pay Platform</h3>
-                            <p class="text-gray-600 mb-6 text-lg">
-                                Nationwide digital health payment system for Ethiopia's Ministry of Health enabling
-                                CBHI enrollment, premium collection, and claims processing for millions of citizens.
-                            </p>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold font-display text-civ-purple">Millions</div>
-                                    <div class="text-sm text-gray-600">Citizens Served</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold font-display text-civ-purple">National</div>
-                                    <div class="text-sm text-gray-600">Scale</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold font-display text-civ-purple">HIPAA</div>
-                                    <div class="text-sm text-gray-600">Compliant</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold font-display text-civ-purple">2025</div>
-                                    <div class="text-sm text-gray-600">Deployed</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Government -->
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift reveal-left">
-                    <div class="md:flex">
-                        <div class="md:w-1/3 gradient-bg p-12 flex items-center justify-center relative overflow-hidden">
-                            <i class="fas fa-landmark text-9xl text-white opacity-30"></i>
-                            <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
-                        </div>
-                        <div class="md:w-2/3 p-8 md:p-12">
-                            <div class="badge bg-purple-100 text-civ-purple mb-4">
-                                <i class="fas fa-flag mr-2"></i> Government Digital Transformation
-                            </div>
-                            <h3 class="text-3xl font-bold font-display mb-4 text-civ-purple">Uganda Ministry of ICT Platform</h3>
-                            <p class="text-gray-600 mb-6 text-lg">
-                                Digital transformation platform serving 2,000+ government employees with role-based
-                                access controls and cross-departmental API integration.
-                            </p>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold font-display text-civ-purple counter">60</div>
-                                    <div class="text-sm text-gray-600">% Efficiency Gain</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold font-display text-civ-purple counter">2000</div>
-                                    <div class="text-sm text-gray-600">Users</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-3xl font-bold font-display text-civ-purple counter">100</div>
-                                    <div class="text-sm text-gray-600">% On-Time</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="text-2xl font-bold font-display text-civ-purple">Gov</div>
-                                    <div class="text-sm text-gray-600">Grade Security</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Approach -->
-    <section id="approach" class="py-20 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
-                    Our <span class="animated-gradient-text">Technical Approach</span>
-                </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Enterprise-grade architecture designed for cultural preservation and national scale
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 items-start mb-16">
-                <div class="reveal-left">
-                    <h3 class="text-3xl font-bold font-display mb-6 text-civ-purple">Platform Features</h3>
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-cloud-upload-alt text-civ-orange text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-display text-lg mb-1">Multi-Media Uploads</h4>
-                                <p class="text-gray-600">Image & video support with virus scanning and bandwidth optimization</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-users text-civ-orange text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-display text-lg mb-1">Community Validation</h4>
-                                <p class="text-gray-600">Local community confirmation of generosity acts</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-share-alt text-civ-orange text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-display text-lg mb-1">Social Integration</h4>
-                                <p class="text-gray-600">WhatsApp, Facebook, X, Instagram sharing</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-trophy text-civ-orange text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-display text-lg mb-1">Cultural Gamification</h4>
-                                <p class="text-gray-600">Ubuntu-aligned badges and community recognition</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-chart-bar text-civ-orange text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold font-display text-lg mb-1">Analytics Engine</h4>
-                                <p class="text-gray-600">Philanthropy patterns and demographic insights</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal-right">
-                    <h3 class="text-3xl font-bold font-display mb-6 text-civ-purple">Security & Compliance</h3>
-                    <div class="gradient-bg text-white rounded-3xl p-8 hover-lift glow-hover">
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
-                                <i class="fas fa-shield-alt text-3xl text-civ-orange"></i>
-                                <div>
-                                    <div class="font-bold font-display">Uganda Data Protection Act</div>
-                                    <div class="text-sm text-purple-200">Full compliance implementation</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
-                                <i class="fas fa-lock text-3xl text-civ-orange"></i>
-                                <div>
-                                    <div class="font-bold font-display">Banking-Grade Security</div>
-                                    <div class="text-sm text-purple-200">UK FSA proven standards</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
-                                <i class="fas fa-globe text-3xl text-civ-orange"></i>
-                                <div>
-                                    <div class="font-bold font-display">GDPR Compliance</div>
-                                    <div class="text-sm text-purple-200">International data protection</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
-                                <i class="fas fa-server text-3xl text-civ-orange"></i>
-                                <div>
-                                    <div class="font-bold font-display">Multi-Cloud Architecture</div>
-                                    <div class="text-sm text-purple-200">Firebase + AWS + Azure redundancy</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
-                                <i class="fas fa-sync text-3xl text-civ-orange"></i>
-                                <div>
-                                    <div class="font-bold font-display">99.9% Uptime SLA</div>
-                                    <div class="text-sm text-purple-200">Geo-distributed backups</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Timeline -->
-            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 md:p-12 reveal-scale hover-lift">
-                <h3 class="text-3xl md:text-4xl font-bold font-display mb-12 text-center text-civ-purple">120-Day Delivery Timeline</h3>
-                <div class="grid md:grid-cols-4 gap-8">
-                    <div class="text-center">
-                        <div class="h-24 w-24 rounded-full gradient-bg text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">1</div>
-                        <h4 class="font-bold font-display text-lg mb-2">Foundation</h4>
-                        <p class="text-sm text-gray-600 mb-2 font-semibold">30 Days</p>
-                        <p class="text-xs text-gray-500">Inception, UX/UI Design, Architecture</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="h-24 w-24 rounded-full bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">2</div>
-                        <h4 class="font-bold font-display text-lg mb-2">Development</h4>
-                        <p class="text-sm text-gray-600 mb-2 font-semibold">60 Days</p>
-                        <p class="text-xs text-gray-500">MVP, Core Features, Testing</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="h-24 w-24 rounded-full gradient-bg text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">3</div>
-                        <h4 class="font-bold font-display text-lg mb-2">Integration</h4>
-                        <p class="text-sm text-gray-600 mb-2 font-semibold">20 Days</p>
-                        <p class="text-xs text-gray-500">Final Platform, Admin Dashboard</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="h-24 w-24 rounded-full bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">4</div>
-                        <h4 class="font-bold font-display text-lg mb-2">Launch</h4>
-                        <p class="text-sm text-gray-600 mb-2 font-semibold">10 Days</p>
-                        <p class="text-xs text-gray-500">Deployment, Training, Documentation</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="py-20 gradient-bg text-white relative overflow-hidden">
-        <div class="particles">
-            <div class="particle" style="left: 15%; animation-delay: 0s;"></div>
-            <div class="particle" style="left: 35%; animation-delay: 3s;"></div>
-            <div class="particle" style="left: 55%; animation-delay: 1.5s;"></div>
-            <div class="particle" style="left: 75%; animation-delay: 4s;"></div>
-            <div class="particle" style="left: 85%; animation-delay: 2s;"></div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
-                    Why Information Village Limited
-                </h2>
-                <p class="text-xl text-purple-100 max-w-3xl mx-auto">
-                    The perfect convergence of Ubuntu philosophy and international technical excellence
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
-                    <i class="fas fa-award text-6xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-3">Cultural Expertise</h3>
-                    <p class="text-purple-100">Deep understanding of African generosity traditions and Ubuntu philosophy</p>
-                </div>
-                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
-                    <i class="fas fa-certificate text-6xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-3">International Standards</h3>
-                    <p class="text-purple-100">UK FSA compliance and multi-jurisdictional regulatory expertise</p>
-                </div>
-                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
-                    <i class="fas fa-rocket text-6xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-3">Proven Delivery</h3>
-                    <p class="text-purple-100">9+ years of consistent on-time delivery with 100% project success rate</p>
-                </div>
-                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
-                    <i class="fas fa-users-cog text-6xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-3">National Scale Experience</h3>
-                    <p class="text-purple-100">Successfully served millions of users across healthcare and government</p>
-                </div>
-                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
-                    <i class="fas fa-handshake text-6xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-3">Community-Centered</h3>
-                    <p class="text-purple-100">Platforms designed to strengthen community bonds and social capital</p>
-                </div>
-                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
-                    <i class="fas fa-life-ring text-6xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold font-display mb-3">Comprehensive Support</h3>
-                    <p class="text-purple-100">24/7 technical support with 6-month maintenance and 99.9% uptime SLA</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="reveal-left">
-                    <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
-                        Let's Build <span class="animated-gradient-text">OmutimaOmugabi</span> Together
-                    </h2>
-                    <p class="text-xl text-gray-600 mb-8">
-                        Partner with Cultural Technology Specialists who combine deep Ubuntu philosophy
-                        understanding with international banking-grade excellence.
+                    <h3 class="text-2xl font-bold font-display mb-4 text-omutima-purple">Community-Centered</h3>
+                    <p class="text-gray-600">
+                        Built on Ubuntu philosophy: "I am what I am because of who we all are"
                     </p>
-
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-civ-purple text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-bold font-display text-lg">Email</div>
-                                <a href="mailto:info@informationvillagelimited.com" class="text-civ-purple hover:text-civ-purple-dark transition">
-                                    info@informationvillagelimited.com
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-phone text-civ-purple text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-bold font-display text-lg">Phone</div>
-                                <a href="tel:+256773185503" class="text-civ-purple hover:text-civ-purple-dark transition">
-                                    +256 773 185 503
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-civ-purple text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-bold font-display text-lg">Location</div>
-                                <div class="text-gray-600">Parliament Avenue, Kampala, Uganda</div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
-                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fab fa-linkedin text-civ-purple text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-bold font-display text-lg">LinkedIn</div>
-                                <a href="https://ug.linkedin.com/company/information-village-ivilleinc" target="_blank" class="text-civ-purple hover:text-civ-purple-dark transition">
-                                    Information Village Limited
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
-                <div class="gradient-bg rounded-3xl p-8 md:p-12 text-white hover-lift glow-hover reveal-right">
-                    <h3 class="text-3xl font-bold font-display mb-6">Technical Lead</h3>
-                    <div class="space-y-4 mb-8">
+                <div class="feature-card text-center reveal" style="transition-delay: 0.1s;">
+                    <div class="icon-container bg-gradient-to-br from-omutima-orange to-omutima-orange-dark text-white mx-auto mb-6">
+                        <i class="fas fa-book-heart"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-display mb-4 text-omutima-purple">Story Preservation</h3>
+                    <p class="text-gray-600">
+                        Documenting non-monetary giving: time, love, labor, energy, and talent
+                    </p>
+                </div>
+
+                <div class="feature-card text-center reveal" style="transition-delay: 0.2s;">
+                    <div class="icon-container bg-gradient-to-br from-purple-500 to-pink-500 text-white mx-auto mb-6">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold font-display mb-4 text-omutima-purple">Social Impact</h3>
+                    <p class="text-gray-600">
+                        Strengthening community bonds through shared generosity stories
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="badge-tag bg-omutima-orange/10 text-omutima-orange mb-4 mx-auto">
+                    <i class="fas fa-sparkles"></i>
+                    <span>Platform Capabilities</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6 text-omutima-purple">
+                    What We'll Build for You
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive features designed to celebrate and preserve Uganda's generous spirit
+                </p>
+            </div>
+
+            <!-- Feature Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                <!-- User Submission Portal -->
+                <div class="feature-card reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-container bg-gradient-to-br from-blue-500 to-blue-600 text-white flex-shrink-0">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
                         <div>
-                            <div class="text-3xl font-bold font-display">Echeru Rodney</div>
-                            <div class="text-purple-200 text-lg">Founder & Technical Lead</div>
+                            <h3 class="text-xl font-bold font-display mb-2 text-omutima-purple">User Submission Portal</h3>
+                            <p class="text-gray-600 text-sm mb-3">Share generosity stories with photos, videos, and location tagging</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">Image Upload</span>
+                                <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">Video Support</span>
+                                <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full">GPS Tagging</span>
+                            </div>
                         </div>
-                        <div class="section-divider my-4"></div>
-                        <div class="space-y-3">
-                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
-                                <i class="fas fa-envelope text-civ-orange text-lg"></i>
-                                <a href="mailto:rodneyecheru@gmail.com" class="hover:text-civ-orange transition">
-                                    rodneyecheru@gmail.com
-                                </a>
+                    </div>
+                </div>
+
+                <!-- Community Validation -->
+                <div class="feature-card reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-container bg-gradient-to-br from-green-500 to-green-600 text-white flex-shrink-0">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-display mb-2 text-omutima-purple">Community Validation</h3>
+                            <p class="text-gray-600 text-sm mb-3">Local community confirms and celebrates acts of generosity</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded-full">Verification</span>
+                                <span class="text-xs bg-green-50 text-green-600 px-2 py-1 rounded-full">Authenticity</span>
                             </div>
-                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
-                                <i class="fas fa-phone text-civ-orange text-lg"></i>
-                                <a href="tel:+256705283258" class="hover:text-civ-orange transition">
-                                    +256 705 283 258
-                                </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Sharing -->
+                <div class="feature-card reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-container bg-gradient-to-br from-pink-500 to-rose-600 text-white flex-shrink-0">
+                            <i class="fas fa-share-nodes"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-display mb-2 text-omutima-purple">Social Sharing</h3>
+                            <p class="text-gray-600 text-sm mb-3">Spread generosity across WhatsApp, Facebook, X, and Instagram</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-pink-50 text-pink-600 px-2 py-1 rounded-full">WhatsApp</span>
+                                <span class="text-xs bg-pink-50 text-pink-600 px-2 py-1 rounded-full">Facebook</span>
+                                <span class="text-xs bg-pink-50 text-pink-600 px-2 py-1 rounded-full">Instagram</span>
                             </div>
-                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
-                                <i class="fab fa-linkedin text-civ-orange text-lg"></i>
-                                <a href="https://www.linkedin.com/in/echeru-rodney" target="_blank" class="hover:text-civ-orange transition">
-                                    linkedin.com/in/echeru-rodney
-                                </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gamification -->
+                <div class="feature-card reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-container bg-gradient-to-br from-yellow-500 to-orange-500 text-white flex-shrink-0">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-display mb-2 text-omutima-purple">Ubuntu Gamification</h3>
+                            <p class="text-gray-600 text-sm mb-3">Community badges and recognition aligned with cultural values</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-yellow-50 text-yellow-600 px-2 py-1 rounded-full">Badges</span>
+                                <span class="text-xs bg-yellow-50 text-yellow-600 px-2 py-1 rounded-full">Leaderboards</span>
                             </div>
-                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
-                                <i class="fab fa-github text-civ-orange text-lg"></i>
-                                <a href="https://github.com/RodneyEcheru" target="_blank" class="hover:text-civ-orange transition">
-                                    github.com/RodneyEcheru
-                                </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics -->
+                <div class="feature-card reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-container bg-gradient-to-br from-purple-500 to-indigo-600 text-white flex-shrink-0">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-display mb-2 text-omutima-purple">Analytics Dashboard</h3>
+                            <p class="text-gray-600 text-sm mb-3">Visualize generosity patterns and demographic insights</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full">Reports</span>
+                                <span class="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-full">Insights</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Multi-Language -->
+                <div class="feature-card reveal">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-container bg-gradient-to-br from-teal-500 to-cyan-600 text-white flex-shrink-0">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-display mb-2 text-omutima-purple">Multi-Language Support</h3>
+                            <p class="text-gray-600 text-sm mb-3">English and Luganda with cultural nuance preservation</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-teal-50 text-teal-600 px-2 py-1 rounded-full">English</span>
+                                <span class="text-xs bg-teal-50 text-teal-600 px-2 py-1 rounded-full">Luganda</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Identity Section -->
+    <section id="design" class="py-20 bg-gradient-to-b from-purple-50 to-orange-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="badge-tag bg-omutima-purple/10 text-omutima-purple mb-4 mx-auto">
+                    <i class="fas fa-palette"></i>
+                    <span>Visual Identity</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6 text-omutima-purple">
+                    Brand Colors & Design System
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    A cohesive visual language that embodies Ubuntu philosophy and Ugandan culture
+                </p>
+            </div>
+
+            <!-- Color Palette -->
+            <div class="max-w-5xl mx-auto mb-16">
+                <h3 class="text-2xl font-bold font-display mb-8 text-center text-omutima-purple">Primary Brand Colors</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="color-card reveal" style="background: linear-gradient(135deg, #6852a2 0%, #4a3771 100%);">
+                        <div>
+                            <div class="text-2xl font-bold mb-1">Primary Purple</div>
+                            <div class="text-sm opacity-90">#6852a2</div>
+                            <div class="text-xs opacity-75 mt-1">RGB(100, 89, 167) • CMYK(40, 47, 0, 35)</div>
+                        </div>
+                    </div>
+                    <div class="color-card reveal" style="background: linear-gradient(135deg, #faa92b 0%, #e89310 100%);">
+                        <div>
+                            <div class="text-2xl font-bold mb-1">Primary Orange</div>
+                            <div class="text-sm opacity-90">#faa92b</div>
+                            <div class="text-xs opacity-75 mt-1">RGB(250, 169, 59) • CMYK(0, 34, 76, 2)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typography Preview -->
+            <div class="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl p-12 reveal">
+                <h3 class="text-2xl font-bold font-display mb-8 text-center text-omutima-purple">Typography System</h3>
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-2">Display Font - Space Grotesk</p>
+                        <h1 class="text-5xl font-display font-bold gradient-text">Celebrating Generosity</h1>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-2">Body Font - Inter</p>
+                        <p class="text-xl text-gray-700">A digital Wall of Fame preserving acts of kindness, care, and community spirit throughout Uganda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Mockups Section -->
+    <section id="mockups" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="badge-tag bg-omutima-orange/10 text-omutima-orange mb-4 mx-auto">
+                    <i class="fas fa-mobile-screen"></i>
+                    <span>Platform Preview</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6 text-omutima-purple">
+                    How It Will Look
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Conceptual designs showcasing the user experience and interface
+                </p>
+            </div>
+
+            <!-- Story Card Example -->
+            <div class="max-w-6xl mx-auto mb-20">
+                <h3 class="text-3xl font-bold font-display mb-8 text-center text-omutima-purple">Story Cards</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Story Card 1 -->
+                    <div class="story-card reveal">
+                        <div class="h-48 bg-gradient-to-br from-purple-400 to-purple-600 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-book-heart text-white text-6xl opacity-30"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-omutima-purple to-omutima-orange"></div>
+                                <div>
+                                    <div class="font-semibold text-sm">Community Member</div>
+                                    <div class="text-xs text-gray-500">Kampala, Uganda</div>
+                                </div>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">Building a Community Library</h4>
+                            <p class="text-sm text-gray-600 mb-4">Donated time and resources to establish a reading space for local children...</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex gap-2">
+                                    <span class="text-xs bg-purple-50 text-omutima-purple px-3 py-1 rounded-full">Time</span>
+                                    <span class="text-xs bg-orange-50 text-omutima-orange px-3 py-1 rounded-full">Labor</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-omutima-orange">
+                                    <i class="fas fa-heart text-sm"></i>
+                                    <span class="text-sm font-semibold">247</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="glass rounded-2xl p-6 border-2 border-white/30">
-                        <div class="text-sm text-purple-200 mb-3 font-semibold">10+ Years Experience</div>
-                        <div class="grid grid-cols-2 gap-3 text-sm">
-                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> International Banking</div>
-                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> National Healthcare</div>
-                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> Government Digital</div>
-                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> Enterprise Security</div>
+                    <!-- Story Card 2 -->
+                    <div class="story-card reveal" style="transition-delay: 0.1s;">
+                        <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-hands-holding-circle text-white text-6xl opacity-30"></i>
+                            </div>
                         </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-500 to-yellow-500"></div>
+                                <div>
+                                    <div class="font-semibold text-sm">Local Hero</div>
+                                    <div class="text-xs text-gray-500">Entebbe, Uganda</div>
+                                </div>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">Free Medical Camp</h4>
+                            <p class="text-sm text-gray-600 mb-4">Organized healthcare services for underserved communities in rural areas...</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex gap-2">
+                                    <span class="text-xs bg-purple-50 text-omutima-purple px-3 py-1 rounded-full">Energy</span>
+                                    <span class="text-xs bg-orange-50 text-omutima-orange px-3 py-1 rounded-full">Talent</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-omutima-orange">
+                                    <i class="fas fa-heart text-sm"></i>
+                                    <span class="text-sm font-semibold">532</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story Card 3 -->
+                    <div class="story-card reveal" style="transition-delay: 0.2s;">
+                        <div class="h-48 bg-gradient-to-br from-teal-400 to-teal-600 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fas fa-seedling text-white text-6xl opacity-30"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal-500 to-green-500"></div>
+                                <div>
+                                    <div class="font-semibold text-sm">Environmental Champion</div>
+                                    <div class="text-xs text-gray-500">Jinja, Uganda</div>
+                                </div>
+                            </div>
+                            <h4 class="font-bold text-lg mb-2">Tree Planting Initiative</h4>
+                            <p class="text-sm text-gray-600 mb-4">Leading community efforts to plant 1,000 trees for future generations...</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex gap-2">
+                                    <span class="text-xs bg-purple-50 text-omutima-purple px-3 py-1 rounded-full">Love</span>
+                                    <span class="text-xs bg-orange-50 text-omutima-orange px-3 py-1 rounded-full">Time</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-omutima-orange">
+                                    <i class="fas fa-heart text-sm"></i>
+                                    <span class="text-sm font-semibold">389</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile App Preview -->
+            <div class="max-w-6xl mx-auto">
+                <h3 class="text-3xl font-bold font-display mb-8 text-center text-omutima-purple">Mobile Experience</h3>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="reveal">
+                        <div class="phone-mockup mx-auto float-animation">
+                            <div class="p-6 pt-12">
+                                <div class="bg-gradient-to-br from-omutima-purple to-omutima-purple-dark text-white rounded-2xl p-6 mb-4">
+                                    <h3 class="text-2xl font-bold mb-2">Welcome to</h3>
+                                    <h2 class="text-3xl font-bold">OmutimaOmugabi</h2>
+                                    <p class="text-sm mt-2 opacity-90">Share stories of generosity</p>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center text-white">
+                                                <i class="fas fa-camera"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-semibold">Share a Story</div>
+                                                <div class="text-xs text-gray-500">Add photos & videos</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center text-white">
+                                                <i class="fas fa-search"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-semibold">Explore Stories</div>
+                                                <div class="text-xs text-gray-500">Browse by location</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-50 rounded-xl p-4 border border-gray-100">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center text-white">
+                                                <i class="fas fa-trophy"></i>
+                                            </div>
+                                            <div>
+                                                <div class="font-semibold">Earn Badges</div>
+                                                <div class="text-xs text-gray-500">Community recognition</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reveal space-y-6">
+                        <h4 class="text-3xl font-bold font-display text-omutima-purple">Intuitive & Accessible</h4>
+                        <p class="text-lg text-gray-600">
+                            Designed for users with varying digital literacy levels, ensuring everyone can participate in celebrating generosity.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-omutima-purple flex-shrink-0">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-lg mb-1">Mobile-First Design</h5>
+                                    <p class="text-gray-600">Optimized for smartphones - the primary internet access point in Uganda</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center text-omutima-orange flex-shrink-0">
+                                    <i class="fas fa-signal"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-lg mb-1">Low-Bandwidth Optimized</h5>
+                                    <p class="text-gray-600">Works seamlessly even in areas with limited connectivity</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-lg bg-teal-100 flex items-center justify-center text-teal-600 flex-shrink-0">
+                                    <i class="fas fa-universal-access"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-lg mb-1">Culturally Familiar</h5>
+                                    <p class="text-gray-600">Icons, colors, and interactions that resonate with Ugandan users</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Architecture -->
+    <section class="py-20 bg-gradient-to-b from-purple-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="badge-tag bg-omutima-purple/10 text-omutima-purple mb-4 mx-auto">
+                    <i class="fas fa-code"></i>
+                    <span>Technology Stack</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6 text-omutima-purple">
+                    Built on Solid Foundations
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Enterprise-grade architecture ensuring security, scalability, and performance
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-card text-center reveal">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h4 class="font-bold text-lg mb-2 text-omutima-purple">Mobile Apps</h4>
+                    <p class="text-sm text-gray-600">Android & iOS native applications</p>
+                </div>
+                <div class="feature-card text-center reveal">
+                    <div class="text-4xl mb-4">🌐</div>
+                    <h4 class="font-bold text-lg mb-2 text-omutima-purple">Web Platform</h4>
+                    <p class="text-sm text-gray-600">Responsive cross-browser compatible</p>
+                </div>
+                <div class="feature-card text-center reveal">
+                    <div class="text-4xl mb-4">☁️</div>
+                    <h4 class="font-bold text-lg mb-2 text-omutima-purple">Cloud Infrastructure</h4>
+                    <p class="text-sm text-gray-600">Firebase + AWS + Azure redundancy</p>
+                </div>
+                <div class="feature-card text-center reveal">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h4 class="font-bold text-lg mb-2 text-omutima-purple">Security</h4>
+                    <p class="text-sm text-gray-600">Bank-grade encryption & compliance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <div class="badge-tag bg-omutima-orange/10 text-omutima-orange mb-4 mx-auto">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Project Timeline</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6 text-omutima-purple">
+                    120-Day Development Journey
+                </h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-omutima-purple to-omutima-orange"></div>
+
+                    <!-- Phase 1 -->
+                    <div class="relative mb-12 reveal">
+                        <div class="flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-omutima-purple to-omutima-purple-dark text-white flex items-center justify-center text-2xl font-bold z-10">1</div>
+                        </div>
+                        <div class="mt-4 bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto">
+                            <h4 class="text-xl font-bold font-display mb-2 text-omutima-purple">Foundation Phase</h4>
+                            <p class="text-sm text-gray-600 mb-2">30 Days</p>
+                            <p class="text-gray-600">Inception Report, UX/UI Design, Architecture Proposal</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="relative mb-12 reveal">
+                        <div class="flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-omutima-orange to-omutima-orange-dark text-white flex items-center justify-center text-2xl font-bold z-10">2</div>
+                        </div>
+                        <div class="mt-4 bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto">
+                            <h4 class="text-xl font-bold font-display mb-2 text-omutima-purple">Core Development</h4>
+                            <p class="text-sm text-gray-600 mb-2">60 Days</p>
+                            <p class="text-gray-600">MVP Development, Core Features, Testing & QA</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="relative mb-12 reveal">
+                        <div class="flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center text-2xl font-bold z-10">3</div>
+                        </div>
+                        <div class="mt-4 bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto">
+                            <h4 class="text-xl font-bold font-display mb-2 text-omutima-purple">Integration Phase</h4>
+                            <p class="text-sm text-gray-600 mb-2">20 Days</p>
+                            <p class="text-gray-600">Final Platform Polish, Admin Dashboard, Integration</p>
+                        </div>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="relative reveal">
+                        <div class="flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-teal-500 text-white flex items-center justify-center text-2xl font-bold z-10">4</div>
+                        </div>
+                        <div class="mt-4 bg-white rounded-xl shadow-lg p-6 max-w-md mx-auto">
+                            <h4 class="text-xl font-bold font-display mb-2 text-omutima-purple">Launch Phase</h4>
+                            <p class="text-sm text-gray-600 mb-2">10 Days</p>
+                            <p class="text-gray-600">Deployment, Training, Documentation & Handover</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-omutima-purple to-omutima-purple-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-omutima-orange rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
+                    Let's Build This Together
+                </h2>
+                <p class="text-xl mb-12 text-purple-100">
+                    Ready to create a platform that celebrates and preserves Uganda's generous spirit?
+                    Let's turn this vision into reality.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                    <a href="mailto:rodneyecheru@gmail.com" class="bg-omutima-orange hover:bg-omutima-orange-dark text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center gap-2 pulse-glow">
+                        <i class="fas fa-envelope"></i>
+                        Start the Conversation
+                    </a>
+                    <a href="tel:+256773185503" class="bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/50 text-white px-8 py-4 rounded-full font-bold text-lg transition flex items-center gap-2">
+                        <i class="fas fa-phone"></i>
+                        Call Us Now
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 text-center">
+                    <div>
+                        <div class="text-3xl mb-2">📧</div>
+                        <p class="text-sm text-purple-200">Email</p>
+                        <p class="font-semibold">rodneyecheru@gmail.com</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl mb-2">📱</div>
+                        <p class="text-sm text-purple-200">Phone</p>
+                        <p class="font-semibold">+256 773 185 503</p>
+                    </div>
+                    <div>
+                        <div class="text-3xl mb-2">🏢</div>
+                        <p class="text-sm text-purple-200">Location</p>
+                        <p class="font-semibold">Kampala, Uganda</p>
                     </div>
                 </div>
             </div>
@@ -1153,94 +914,42 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="h-12 w-12 rounded-full gradient-bg flex items-center justify-center">
-                            <i class="fas fa-heart text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold font-display">OmutimaOmugabi</h3>
-                            <p class="text-sm text-gray-400">Proposal by Information Village</p>
-                        </div>
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-omutima-purple to-omutima-orange flex items-center justify-center">
+                        <i class="fas fa-heart text-white text-xl"></i>
                     </div>
-                    <p class="text-gray-400 text-sm">
-                        Cultural Technology Specialists combining Ubuntu philosophy with international excellence.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="font-bold font-display mb-4">Quick Links</h4>
-                    <div class="space-y-2 text-sm">
-                        <a href="#vision" class="block text-gray-400 hover:text-civ-orange transition">Vision</a>
-                        <a href="#capabilities" class="block text-gray-400 hover:text-civ-orange transition">Capabilities</a>
-                        <a href="#portfolio" class="block text-gray-400 hover:text-civ-orange transition">Portfolio</a>
-                        <a href="#approach" class="block text-gray-400 hover:text-civ-orange transition">Approach</a>
-                        <a href="#contact" class="block text-gray-400 hover:text-civ-orange transition">Contact</a>
+                    <div>
+                        <div class="font-display font-bold text-xl">OmutimaOmugabi</div>
+                        <div class="text-sm text-gray-400">Platform Design by Information Village Limited</div>
                     </div>
                 </div>
-
-                <div>
-                    <h4 class="font-bold font-display mb-4">Company Info</h4>
-                    <div class="space-y-2 text-sm text-gray-400">
-                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> Established: 2015</div>
-                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 9+ Years of Excellence</div>
-                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 4 Countries Deployment</div>
-                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 10M+ Users Served</div>
-                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 99.9% Uptime Achievement</div>
-                    </div>
+                <div class="text-center md:text-right text-sm text-gray-400">
+                    <p>© 2025 Information Village Limited</p>
+                    <p class="mt-1">Kampala, Uganda • +256 773 185 503</p>
                 </div>
-            </div>
-
-            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; 2025 Information Village Limited. All rights reserved. | Proposal Validity: 90 days</p>
             </div>
         </div>
     </footer>
 
-    <!-- GSAP ScrollTrigger Animations -->
     <script>
-        // Register ScrollTrigger plugin
+        // Register GSAP plugins
         gsap.registerPlugin(ScrollTrigger);
 
         // Scroll Progress Bar
-        gsap.to('.scroll-progress', {
-            width: '100%',
-            ease: 'none',
-            scrollTrigger: {
-                trigger: 'body',
-                start: 'top top',
-                end: 'bottom bottom',
-                scrub: 0.3
-            }
-        });
-
-        // Navbar Hide/Show on Scroll
-        let lastScroll = 0;
         window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            const navbar = document.getElementById('navbar');
-
-            if (currentScroll <= 0) {
-                navbar.classList.remove('navbar-hidden');
-                return;
-            }
-
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                navbar.classList.add('navbar-hidden');
-            } else {
-                navbar.classList.remove('navbar-hidden');
-            }
-            lastScroll = currentScroll;
+            const scrollProgress = document.querySelector('.scroll-progress');
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
         });
 
-        // Reveal Animations
+        // Reveal animations on scroll
         gsap.utils.toArray('.reveal').forEach((elem) => {
             gsap.from(elem, {
                 opacity: 0,
-                y: 100,
-                duration: 1,
+                y: 50,
+                duration: 0.8,
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: elem,
@@ -1251,171 +960,111 @@
             });
         });
 
-        // Reveal Left
-        gsap.utils.toArray('.reveal-left').forEach((elem) => {
-            gsap.from(elem, {
-                opacity: 0,
-                x: -100,
-                duration: 1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: elem,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                }
-            });
-        });
-
-        // Reveal Right
-        gsap.utils.toArray('.reveal-right').forEach((elem) => {
-            gsap.from(elem, {
-                opacity: 0,
-                x: 100,
-                duration: 1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: elem,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                }
-            });
-        });
-
-        // Reveal Scale
-        gsap.utils.toArray('.reveal-scale').forEach((elem, index) => {
-            gsap.from(elem, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.8,
-                delay: index * 0.1,
-                ease: 'back.out(1.7)',
-                scrollTrigger: {
-                    trigger: elem,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                }
-            });
-        });
-
-        // Parallax Effects
-        gsap.utils.toArray('.parallax-slow').forEach((elem) => {
-            gsap.to(elem, {
-                y: -100,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: elem,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: 1
-                }
-            });
-        });
-
-        gsap.utils.toArray('.parallax-fast').forEach((elem) => {
-            gsap.to(elem, {
-                y: 100,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: elem,
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: 1
-                }
-            });
-        });
-
-        // Smooth scroll for navigation links
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const navHeight = document.getElementById('navbar').offsetHeight;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
 
-        // Counter Animation
-        function animateCounter(element, target, suffix = '') {
-            let current = 0;
-            const increment = target / 60;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = Math.floor(target) + suffix;
-                    clearInterval(timer);
-                } else {
-                    element.textContent = Math.floor(current) + suffix;
-                }
-            }, 30);
-        }
-
-        // Observe counter elements
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target;
-                    const text = element.textContent;
-
-                    // Extract number and suffix
-                    const match = text.match(/(\d+)(.*)/);
-                    if (match) {
-                        const target = parseInt(match[1]);
-                        const suffix = match[2];
-                        animateCounter(element, target, suffix);
-                    }
-
-                    counterObserver.unobserve(element);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        document.querySelectorAll('.counter').forEach(counter => {
-            counterObserver.observe(counter);
-        });
-
-        // Magnetic Button Effect
-        document.querySelectorAll('.magnetic-btn').forEach(btn => {
-            btn.addEventListener('mousemove', (e) => {
-                const rect = btn.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                gsap.to(btn, {
-                    x: x * 0.3,
-                    y: y * 0.3,
-                    duration: 0.3
+        // Add hover animations to feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    scale: 1.03,
+                    duration: 0.3,
+                    ease: 'power2.out'
                 });
             });
 
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(btn, {
-                    x: 0,
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Story card micro-animations
+        document.querySelectorAll('.story-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -5,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
                     y: 0,
-                    duration: 0.3
+                    duration: 0.3,
+                    ease: 'power2.out'
                 });
             });
         });
 
-        // Hover Lift 3D Effect
-        document.querySelectorAll('.hover-lift').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                gsap.to(this, {
-                    y: -15,
+        // Icon container rotation on hover
+        document.querySelectorAll('.icon-container').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                gsap.to(icon, {
+                    rotation: 360,
+                    scale: 1.1,
+                    duration: 0.6,
+                    ease: 'back.out(1.7)'
+                });
+            });
+
+            icon.addEventListener('mouseleave', () => {
+                gsap.to(icon, {
+                    rotation: 0,
+                    scale: 1,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Badge hover effects
+        document.querySelectorAll('.badge-tag').forEach(badge => {
+            badge.addEventListener('mouseenter', () => {
+                gsap.to(badge, {
+                    scale: 1.05,
+                    duration: 0.2,
+                    ease: 'power2.out'
+                });
+            });
+
+            badge.addEventListener('mouseleave', () => {
+                gsap.to(badge, {
+                    scale: 1,
+                    duration: 0.2,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Color card animations
+        document.querySelectorAll('.color-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -8,
                     scale: 1.02,
                     duration: 0.4,
                     ease: 'power2.out'
                 });
             });
 
-            card.addEventListener('mouseleave', function() {
-                gsap.to(this, {
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
                     y: 0,
                     scale: 1,
                     duration: 0.4,
@@ -1423,6 +1072,20 @@
                 });
             });
         });
+
+        // Phone mockup parallax effect
+        gsap.to('.phone-mockup', {
+            y: -50,
+            scrollTrigger: {
+                trigger: '.phone-mockup',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+
+        // Initialize
+        console.log('OmutimaOmugabi Platform Design - Ready!');
     </script>
 </body>
 </html>
