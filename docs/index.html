@@ -412,7 +412,22 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-pattern pt-32 pb-20 text-white relative overflow-hidden min-h-screen flex items-center">
+    <section class="pt-32 pb-20 text-white relative overflow-hidden min-h-screen flex items-center">
+        <!-- YouTube Video Background -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden">
+            <iframe
+                id="hero-video"
+                class="absolute top-1/2 left-1/2 w-screen h-screen min-w-full min-h-full"
+                style="transform: translate(-50%, -50%) scale(1.5);"
+                src="https://www.youtube.com/embed/EqbplZwDDf4?autoplay=1&mute=1&loop=1&playlist=EqbplZwDDf4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
+            <!-- Dark overlay for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-br from-omutima-purple/80 via-omutima-purple/70 to-omutima-purple-dark/80"></div>
+        </div>
+
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-5xl mx-auto text-center">
                 <div class="badge-tag bg-white/20 backdrop-blur-sm border border-white/30 text-white mb-8 mx-auto">
