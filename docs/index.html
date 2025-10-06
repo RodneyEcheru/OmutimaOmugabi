@@ -57,11 +57,34 @@
             background: #ffffff;
         }
 
-        /* Animated Gradient Background */
+        /* Enhanced Animated Gradient Background */
         .gradient-bg {
             background: linear-gradient(135deg, #6852a2 0%, #4a3771 50%, #6852a2 100%);
             background-size: 200% 200%;
             animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         @keyframes gradientShift {
@@ -120,16 +143,34 @@
             transform: translateZ(50px);
         }
 
-        /* Smooth Hover Effects with Liquid Glass */
+        /* Smooth Hover Effects - Enhanced with Better Contrast */
         .hover-lift {
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.95) 0%,
-                rgba(255, 255, 255, 1) 100%
-            );
-            border: 1px solid rgba(104, 82, 162, 0.08);
+            border: 1.5px solid rgba(104, 82, 162, 0.12);
+            box-shadow:
+                0 4px 20px rgba(104, 82, 162, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        /* White background only for non-gradient cards and non-translucent backgrounds */
+        .hover-lift:not(.gradient-bg):not([class*="bg-gradient"]):not([class*="bg-white/"]) {
+            background: #ffffff;
+        }
+
+        .hover-lift::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6852a2, #faa92b);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: inherit;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
         }
 
         .hover-lift::after {
@@ -141,13 +182,18 @@
             bottom: 0;
             background: linear-gradient(
                 135deg,
-                rgba(250, 169, 43, 0.03) 0%,
-                rgba(104, 82, 162, 0.03) 100%
+                rgba(250, 169, 43, 0.02) 0%,
+                rgba(104, 82, 162, 0.02) 100%
             );
             opacity: 0;
             transition: opacity 0.4s ease;
             pointer-events: none;
             border-radius: inherit;
+            z-index: -1;
+        }
+
+        .hover-lift:hover::before {
+            opacity: 1;
         }
 
         .hover-lift:hover::after {
@@ -157,10 +203,11 @@
         .hover-lift:hover {
             transform: translateY(-12px) scale(1.02);
             box-shadow:
-                0 30px 60px rgba(104, 82, 162, 0.2),
-                0 15px 30px rgba(250, 169, 43, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            border-color: rgba(104, 82, 162, 0.15);
+                0 30px 60px rgba(104, 82, 162, 0.15),
+                0 15px 30px rgba(250, 169, 43, 0.08),
+                0 0 0 1px rgba(104, 82, 162, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 1);
+            border-color: rgba(104, 82, 162, 0.2);
         }
 
         /* Magnetic Button Effect */
@@ -250,7 +297,7 @@
             background: linear-gradient(90deg, transparent, #faa92b, transparent);
         }
 
-        /* Badge Styles */
+        /* Enhanced Badge Styles */
         .badge {
             display: inline-flex;
             align-items: center;
@@ -259,6 +306,38 @@
             font-size: 0.875rem;
             font-weight: 600;
             backdrop-filter: blur(10px);
+            box-shadow:
+                0 4px 15px rgba(104, 82, 162, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: scale(1.05);
+            box-shadow:
+                0 6px 20px rgba(104, 82, 162, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        /* Enhanced Icon Containers */
+        .icon-gradient {
+            background: linear-gradient(135deg, #faa92b 0%, #ff8c42 100%);
+            padding: 1rem;
+            border-radius: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow:
+                0 8px 25px rgba(250, 169, 43, 0.3),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .icon-gradient:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow:
+                0 12px 35px rgba(250, 169, 43, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.4);
         }
 
         /* Counter Styles */
@@ -336,17 +415,21 @@
             background: linear-gradient(180deg, #4a3771, #e89310);
         }
 
-        /* Glow Effect */
+        /* Enhanced Glow Effects */
         .glow {
-            box-shadow: 0 0 20px rgba(250, 169, 43, 0.5);
+            box-shadow: 0 0 25px rgba(250, 169, 43, 0.6), 0 0 50px rgba(104, 82, 162, 0.3);
         }
 
         .glow-hover {
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .glow-hover:hover {
-            box-shadow: 0 0 30px rgba(250, 169, 43, 0.7), 0 0 60px rgba(104, 82, 162, 0.4);
+            box-shadow:
+                0 0 40px rgba(250, 169, 43, 0.8),
+                0 0 80px rgba(104, 82, 162, 0.5),
+                0 20px 60px rgba(0, 0, 0, 0.2);
+            transform: translateY(-4px);
         }
 
         /* Text Shadow Effects */
