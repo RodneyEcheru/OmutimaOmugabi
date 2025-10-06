@@ -95,12 +95,42 @@
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23faa92b' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* Glass Morphism */
+        /* Apple Liquid Glass Morphism */
         .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.05) 100%
+            );
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow:
+                0 8px 32px 0 rgba(104, 82, 162, 0.15),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.3),
+                inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: left 0.5s;
+        }
+
+        .glass:hover::before {
+            left: 100%;
         }
 
         /* 3D Card Effect */
@@ -117,14 +147,47 @@
             transform: translateZ(50px);
         }
 
-        /* Smooth Hover Effects */
+        /* Smooth Hover Effects with Liquid Glass */
         .hover-lift {
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.95) 0%,
+                rgba(255, 255, 255, 1) 100%
+            );
+            border: 1px solid rgba(104, 82, 162, 0.08);
+        }
+
+        .hover-lift::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(250, 169, 43, 0.03) 0%,
+                rgba(104, 82, 162, 0.03) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .hover-lift:hover::after {
+            opacity: 1;
         }
 
         .hover-lift:hover {
             transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(104, 82, 162, 0.3);
+            box-shadow:
+                0 30px 60px rgba(104, 82, 162, 0.2),
+                0 15px 30px rgba(250, 169, 43, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-color: rgba(104, 82, 162, 0.15);
         }
 
         /* Magnetic Button Effect */
@@ -317,6 +380,109 @@
         .text-glow {
             text-shadow: 0 0 20px rgba(250, 169, 43, 0.5);
         }
+
+        /* Premium Liquid Glass Cards */
+        .liquid-glass {
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            backdrop-filter: blur(30px) saturate(200%);
+            -webkit-backdrop-filter: blur(30px) saturate(200%);
+            border: 1.5px solid;
+            border-image: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.4),
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.4)
+            ) 1;
+            box-shadow:
+                0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+                inset 0 -1px 0 0 rgba(255, 255, 255, 0.2),
+                0 4px 16px 0 rgba(104, 82, 162, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .liquid-glass::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 70%
+            );
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .liquid-glass:hover::before {
+            opacity: 1;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-30%, -30%) scale(1.1);
+            }
+        }
+
+        /* Enhanced gradient cards with liquid effect */
+        .gradient-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gradient-card:hover::before {
+            opacity: 1;
+        }
+
+        .gradient-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 255, 255, 0.15) 0%,
+                transparent 70%
+            );
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .gradient-card:hover::after {
+            width: 200%;
+            height: 200%;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -392,7 +558,7 @@
 
                 <div class="relative reveal-right">
                     <div class="float-animation">
-                        <div class="glass rounded-3xl p-8 border-2 border-white/30 hover-lift">
+                        <div class="liquid-glass rounded-3xl p-8 border-2 border-white/30 hover-lift">
                             <div class="grid grid-cols-2 gap-6">
                                 <div class="text-center reveal-scale">
                                     <div class="text-5xl mb-2"><i class="fas fa-users text-civ-orange text-glow"></i></div>
@@ -496,37 +662,37 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="gradient-bg text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                <div class="gradient-bg gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
                     <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-2">International Banking Compliance</h3>
                     <p class="text-purple-100">UK FSA + East African regulations mastery</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
                     <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-2">Multi-Country Deployment</h3>
                     <p class="text-orange-100">4 countries proven track record</p>
                 </div>
 
-                <div class="gradient-bg text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                <div class="gradient-bg gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
                     <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-2">National-Scale Platforms</h3>
                     <p class="text-purple-100">Millions of users served successfully</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
                     <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-2">Government Credentials</h3>
                     <p class="text-orange-100">Uganda Ministry of ICT transformation</p>
                 </div>
 
-                <div class="gradient-bg text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                <div class="gradient-bg gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
                     <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-2">Cultural Technology Specialization</h3>
                     <p class="text-purple-100">Ubuntu philosophy integration expertise</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark gradient-card text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
                     <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-2">9+ Years Excellence</h3>
                     <p class="text-orange-100">Consistent on-time delivery since 2015</p>
@@ -827,32 +993,32 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
                     <i class="fas fa-award text-6xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-3">Cultural Expertise</h3>
                     <p class="text-purple-100">Deep understanding of African generosity traditions and Ubuntu philosophy</p>
                 </div>
-                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
                     <i class="fas fa-certificate text-6xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-3">International Standards</h3>
                     <p class="text-purple-100">UK FSA compliance and multi-jurisdictional regulatory expertise</p>
                 </div>
-                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
                     <i class="fas fa-rocket text-6xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-3">Proven Delivery</h3>
                     <p class="text-purple-100">9+ years of consistent on-time delivery with 100% project success rate</p>
                 </div>
-                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
                     <i class="fas fa-users-cog text-6xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-3">National Scale Experience</h3>
                     <p class="text-purple-100">Successfully served millions of users across healthcare and government</p>
                 </div>
-                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
                     <i class="fas fa-handshake text-6xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-3">Community-Centered</h3>
                     <p class="text-purple-100">Platforms designed to strengthen community bonds and social capital</p>
                 </div>
-                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                <div class="liquid-glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
                     <i class="fas fa-life-ring text-6xl text-civ-orange mb-4"></i>
                     <h3 class="text-xl font-bold font-display mb-3">Comprehensive Support</h3>
                     <p class="text-purple-100">24/7 technical support with 6-month maintenance and 99.9% uptime SLA</p>
