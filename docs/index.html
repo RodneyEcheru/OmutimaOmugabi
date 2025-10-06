@@ -8,15 +8,15 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- AOS Animation Library via CDN -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP Core & ScrollTrigger for Advanced Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Font Awesome for Icons via CDN -->
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Custom Tailwind Configuration -->
     <script>
@@ -33,6 +33,7 @@
                     },
                     fontFamily: {
                         'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Space Grotesk', 'Inter', 'sans-serif'],
                     }
                 }
             }
@@ -40,12 +41,32 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        /* Animated Gradient Background */
         .gradient-bg {
-            background: linear-gradient(135deg, #6852a2 0%, #4a3771 100%);
+            background: linear-gradient(135deg, #6852a2 0%, #4a3771 50%, #6852a2 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .gradient-text {
@@ -55,71 +76,275 @@
             background-clip: text;
         }
 
+        .animated-gradient-text {
+            background: linear-gradient(90deg, #6852a2, #faa92b, #6852a2);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Hero Pattern */
         .hero-pattern {
             background-color: #6852a2;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23faa92b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23faa92b' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .card-hover {
-            transition: all 0.3s ease;
+        /* Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(104, 82, 162, 0.3);
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .counter {
-            font-variant-numeric: tabular-nums;
+        .card-3d:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
         }
 
+        .card-3d-inner {
+            transform: translateZ(50px);
+        }
+
+        /* Smooth Hover Effects */
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(104, 82, 162, 0.3);
+        }
+
+        /* Magnetic Button Effect */
+        .magnetic-btn {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .magnetic-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(250, 169, 43, 0.4);
+        }
+
+        /* Animated Border */
+        .animated-border {
+            position: relative;
+            background: linear-gradient(135deg, #6852a2, #faa92b);
+            padding: 2px;
+            border-radius: 1.5rem;
+        }
+
+        .animated-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 1.5rem;
+            padding: 2px;
+            background: linear-gradient(135deg, #faa92b, #6852a2, #faa92b);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderRotate 3s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .pulse-animation {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* Particle Background */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(250, 169, 43, 0.5);
+            border-radius: 50%;
+            animation: particleFloat 15s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        }
+
+        /* Section Divider */
         .section-divider {
             height: 2px;
             background: linear-gradient(90deg, transparent, #faa92b, transparent);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-
+        /* Badge Styles */
         .badge {
             display: inline-flex;
             align-items: center;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.25rem;
             border-radius: 9999px;
             font-size: 0.875rem;
             font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Counter Styles */
+        .counter {
+            font-variant-numeric: tabular-nums;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #6852a2, #faa92b);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* Parallax Layers */
+        .parallax-slow {
+            will-change: transform;
+        }
+
+        .parallax-fast {
+            will-change: transform;
+        }
+
+        /* Smooth Navbar */
+        .navbar-hidden {
+            transform: translateY(-100%);
+        }
+
+        nav {
+            transition: transform 0.3s ease-in-out, background 0.3s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6852a2, #faa92b);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #4a3771, #e89310);
+        }
+
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(250, 169, 43, 0.5);
+        }
+
+        .glow-hover {
+            transition: all 0.3s ease;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(250, 169, 43, 0.7), 0 0 60px rgba(104, 82, 162, 0.4);
+        }
+
+        /* Text Shadow Effects */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(250, 169, 43, 0.5);
         }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-md">
+    <nav id="navbar" class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-3">
-                    <div class="h-12 w-12 rounded-full gradient-bg flex items-center justify-center">
+                    <div class="h-12 w-12 rounded-full gradient-bg flex items-center justify-center pulse-animation">
                         <i class="fas fa-heart text-white text-xl"></i>
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold text-civ-purple">OmutimaOmugabi</h1>
+                        <h1 class="text-xl font-bold font-display text-civ-purple">OmutimaOmugabi</h1>
                         <p class="text-xs text-gray-600">by Information Village Limited</p>
                     </div>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#vision" class="text-gray-700 hover:text-civ-purple transition">Vision</a>
-                    <a href="#capabilities" class="text-gray-700 hover:text-civ-purple transition">Capabilities</a>
-                    <a href="#portfolio" class="text-gray-700 hover:text-civ-purple transition">Portfolio</a>
-                    <a href="#approach" class="text-gray-700 hover:text-civ-purple transition">Approach</a>
-                    <a href="#contact" class="text-gray-700 hover:text-civ-purple transition">Contact</a>
+                    <a href="#vision" class="text-gray-700 hover:text-civ-purple transition font-medium">Vision</a>
+                    <a href="#capabilities" class="text-gray-700 hover:text-civ-purple transition font-medium">Capabilities</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-civ-purple transition font-medium">Portfolio</a>
+                    <a href="#approach" class="text-gray-700 hover:text-civ-purple transition font-medium">Approach</a>
+                    <a href="#contact" class="text-gray-700 hover:text-civ-purple transition font-medium">Contact</a>
                 </div>
-                <a href="#contact" class="bg-civ-orange hover:bg-civ-orange-dark text-white px-6 py-2 rounded-full transition font-semibold">
+                <a href="#contact" class="magnetic-btn bg-civ-orange hover:bg-civ-orange-dark text-white px-6 py-3 rounded-full font-semibold">
                     Get Started
                 </a>
             </div>
@@ -127,53 +352,66 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-pattern pt-32 pb-20 text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section class="hero-pattern pt-32 pb-20 text-white relative overflow-hidden min-h-screen flex items-center">
+        <!-- Particles Background -->
+        <div class="particles">
+            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+            <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+            <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+            <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <div class="badge bg-civ-orange/20 text-civ-orange-light mb-6">
+                <div class="reveal-left">
+                    <div class="badge glass text-civ-orange-light mb-6 glow">
                         <i class="fas fa-star mr-2"></i> Cultural Technology Specialists
                     </div>
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 leading-tight">
                         Celebrating Uganda's<br/>
-                        <span class="text-civ-orange">Generous Spirit</span>
+                        <span class="animated-gradient-text">Generous Spirit</span>
                     </h1>
                     <p class="text-xl mb-8 text-purple-100 leading-relaxed">
                         A digital Wall of Fame preserving acts of kindness, care, and community spirit.
                         More than an app—it's a living archive of Ubuntu philosophy in action.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#capabilities" class="bg-civ-orange hover:bg-civ-orange-dark text-white px-8 py-4 rounded-full font-semibold transition shadow-lg">
+                        <a href="#capabilities" class="magnetic-btn bg-civ-orange hover:bg-civ-orange-dark text-white px-8 py-4 rounded-full font-semibold shadow-lg glow-hover">
                             <i class="fas fa-rocket mr-2"></i> See Our Capabilities
                         </a>
-                        <a href="#portfolio" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold transition border-2 border-white/30">
+                        <a href="#portfolio" class="magnetic-btn glass text-white px-8 py-4 rounded-full font-semibold border-2 border-white/30">
                             <i class="fas fa-briefcase mr-2"></i> View Portfolio
                         </a>
                     </div>
                 </div>
 
-                <div class="relative" data-aos="fade-left">
+                <div class="relative reveal-right">
                     <div class="float-animation">
-                        <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border-2 border-white/20">
+                        <div class="glass rounded-3xl p-8 border-2 border-white/30 hover-lift">
                             <div class="grid grid-cols-2 gap-6">
-                                <div class="text-center">
-                                    <div class="text-5xl mb-2"><i class="fas fa-users text-civ-orange"></i></div>
-                                    <div class="text-3xl font-bold counter">10M+</div>
-                                    <div class="text-sm text-purple-200">Users Served</div>
+                                <div class="text-center reveal-scale">
+                                    <div class="text-5xl mb-2"><i class="fas fa-users text-civ-orange text-glow"></i></div>
+                                    <div class="text-4xl font-bold font-display counter">10</div>
+                                    <div class="text-sm text-purple-200">Million+ Users</div>
                                 </div>
-                                <div class="text-center">
-                                    <div class="text-5xl mb-2"><i class="fas fa-globe text-civ-orange"></i></div>
-                                    <div class="text-3xl font-bold counter">4</div>
+                                <div class="text-center reveal-scale">
+                                    <div class="text-5xl mb-2"><i class="fas fa-globe text-civ-orange text-glow"></i></div>
+                                    <div class="text-4xl font-bold font-display counter">4</div>
                                     <div class="text-sm text-purple-200">Countries</div>
                                 </div>
-                                <div class="text-center">
-                                    <div class="text-5xl mb-2"><i class="fas fa-building text-civ-orange"></i></div>
-                                    <div class="text-3xl font-bold counter">5+</div>
+                                <div class="text-center reveal-scale">
+                                    <div class="text-5xl mb-2"><i class="fas fa-building text-civ-orange text-glow"></i></div>
+                                    <div class="text-4xl font-bold font-display counter">5</div>
                                     <div class="text-sm text-purple-200">Banking Clients</div>
                                 </div>
-                                <div class="text-center">
-                                    <div class="text-5xl mb-2"><i class="fas fa-calendar text-civ-orange"></i></div>
-                                    <div class="text-3xl font-bold counter">9+</div>
+                                <div class="text-center reveal-scale">
+                                    <div class="text-5xl mb-2"><i class="fas fa-calendar text-civ-orange text-glow"></i></div>
+                                    <div class="text-4xl font-bold font-display counter">9</div>
                                     <div class="text-sm text-purple-200">Years Excellence</div>
                                 </div>
                             </div>
@@ -184,55 +422,55 @@
         </div>
 
         <!-- Decorative Elements -->
-        <div class="absolute top-20 right-10 opacity-20">
-            <i class="fas fa-heart text-8xl text-civ-orange"></i>
+        <div class="absolute top-20 right-10 opacity-20 parallax-slow">
+            <i class="fas fa-heart text-9xl text-civ-orange"></i>
         </div>
-        <div class="absolute bottom-20 left-10 opacity-20">
-            <i class="fas fa-hands-helping text-8xl text-civ-orange"></i>
+        <div class="absolute bottom-20 left-10 opacity-20 parallax-fast">
+            <i class="fas fa-hands-helping text-9xl text-civ-orange"></i>
         </div>
     </section>
 
     <!-- Vision Statement -->
-    <section id="vision" class="py-20 bg-gray-50">
+    <section id="vision" class="py-20 bg-gray-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    <span class="gradient-text">Ubuntu Philosophy</span> + International Excellence
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
+                    <span class="animated-gradient-text">Ubuntu Philosophy</span> + International Excellence
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                     "I am what I am because of who we all are" — We blend authentic African generosity
                     traditions with banking-grade technical standards proven across 4 countries.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-16 w-16 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-heart text-3xl text-civ-purple"></i>
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift reveal-scale">
+                    <div class="h-20 w-20 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6 pulse-animation">
+                        <i class="fas fa-heart text-4xl text-civ-purple"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-civ-purple">Cultural Preservation</h3>
+                    <h3 class="text-2xl font-bold font-display mb-4 text-civ-purple">Cultural Preservation</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Digital storytelling that honors oral traditions, celebrates non-monetary giving
                         (time, love, labor, energy, talent), and creates intergenerational knowledge transfer.
                     </p>
                 </div>
 
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-16 w-16 rounded-full bg-civ-orange/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-shield-alt text-3xl text-civ-orange"></i>
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift reveal-scale">
+                    <div class="h-20 w-20 rounded-full bg-civ-orange/10 flex items-center justify-center mb-6 pulse-animation">
+                        <i class="fas fa-shield-alt text-4xl text-civ-orange"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-civ-purple">Enterprise Security</h3>
+                    <h3 class="text-2xl font-bold font-display mb-4 text-civ-purple">Enterprise Security</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Banking-grade security proven through UK FSA compliance, multi-factor authentication,
                         end-to-end encryption, and GDPR adherence across international deployments.
                     </p>
                 </div>
 
-                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-16 w-16 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-line text-3xl text-civ-purple"></i>
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift reveal-scale">
+                    <div class="h-20 w-20 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6 pulse-animation">
+                        <i class="fas fa-chart-line text-4xl text-civ-purple"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 text-civ-purple">National Scale</h3>
+                    <h3 class="text-2xl font-bold font-display mb-4 text-civ-purple">National Scale</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Proven delivery of platforms serving millions of users with 99.9% uptime,
                         optimized for low-bandwidth rural access and cross-cultural deployment.
@@ -243,13 +481,13 @@
     </section>
 
     <!-- Unique Advantages -->
-    <section id="capabilities" class="py-20 bg-white">
+    <section id="capabilities" class="py-20 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-16 reveal">
                 <div class="badge bg-civ-purple/10 text-civ-purple mb-4 mx-auto">
                     <i class="fas fa-trophy mr-2"></i> Our Competitive Edge
                 </div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-civ-purple">
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6 text-civ-purple">
                     The ONLY Ugandan Firm With
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -258,39 +496,39 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-check-circle text-3xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">International Banking Compliance</h3>
+                <div class="gradient-bg text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                    <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-2">International Banking Compliance</h3>
                     <p class="text-purple-100">UK FSA + East African regulations mastery</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-check-circle text-3xl text-civ-purple mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Multi-Country Deployment</h3>
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                    <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-2">Multi-Country Deployment</h3>
                     <p class="text-orange-100">4 countries proven track record</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-check-circle text-3xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">National-Scale Platforms</h3>
+                <div class="gradient-bg text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                    <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-2">National-Scale Platforms</h3>
                     <p class="text-purple-100">Millions of users served successfully</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fas fa-check-circle text-3xl text-civ-purple mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Government Credentials</h3>
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                    <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-2">Government Credentials</h3>
                     <p class="text-orange-100">Uganda Ministry of ICT transformation</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="500">
-                    <i class="fas fa-check-circle text-3xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Cultural Technology Specialization</h3>
+                <div class="gradient-bg text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                    <i class="fas fa-check-circle text-4xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-2">Cultural Technology Specialization</h3>
                     <p class="text-purple-100">Ubuntu philosophy integration expertise</p>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="600">
-                    <i class="fas fa-check-circle text-3xl text-civ-purple mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">9+ Years Excellence</h3>
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-8 hover-lift reveal-scale glow-hover">
+                    <i class="fas fa-check-circle text-4xl text-civ-purple-dark mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-2">9+ Years Excellence</h3>
                     <p class="text-orange-100">Consistent on-time delivery since 2015</p>
                 </div>
             </div>
@@ -298,11 +536,11 @@
     </section>
 
     <!-- Portfolio Showcase -->
-    <section id="portfolio" class="py-20 bg-gray-50">
+    <section id="portfolio" class="py-20 bg-gray-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Proven <span class="gradient-text">Track Record</span>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
+                    Proven <span class="animated-gradient-text">Track Record</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Real projects, real impact, real results across healthcare, banking, and government sectors
@@ -311,35 +549,36 @@
 
             <div class="space-y-8">
                 <!-- Project 1: International Banking -->
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover" data-aos="fade-right">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift reveal-left">
                     <div class="md:flex">
-                        <div class="md:w-1/3 bg-gradient-to-br from-blue-500 to-blue-700 p-12 flex items-center justify-center">
-                            <i class="fas fa-university text-8xl text-white opacity-50"></i>
+                        <div class="md:w-1/3 bg-gradient-to-br from-blue-500 to-blue-700 p-12 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-university text-9xl text-white opacity-30"></i>
+                            <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
                         </div>
                         <div class="md:w-2/3 p-8 md:p-12">
                             <div class="badge bg-blue-100 text-blue-700 mb-4">
                                 <i class="fas fa-globe mr-2"></i> International Banking
                             </div>
-                            <h3 class="text-3xl font-bold mb-4 text-civ-purple">Multi-Country Banking Systems</h3>
+                            <h3 class="text-3xl font-bold font-display mb-4 text-civ-purple">Multi-Country Banking Systems</h3>
                             <p class="text-gray-600 mb-6 text-lg">
                                 Deployed secure banking interfaces across Uganda, Kenya, Senegal, and United Kingdom
                                 serving 5+ core banking institutions with UK FSA compliance.
                             </p>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">40%</div>
-                                    <div class="text-sm text-gray-600">Performance Boost</div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold font-display text-civ-purple counter">40</div>
+                                    <div class="text-sm text-gray-600">% Performance Boost</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">4</div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold font-display text-civ-purple counter">4</div>
                                     <div class="text-sm text-gray-600">Countries</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">5+</div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold font-display text-civ-purple counter">5</div>
                                     <div class="text-sm text-gray-600">Banks</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">99.5%</div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold font-display text-civ-purple">99.5%</div>
                                     <div class="text-sm text-gray-600">Uptime</div>
                                 </div>
                             </div>
@@ -348,35 +587,36 @@
                 </div>
 
                 <!-- Project 2: Healthcare -->
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover" data-aos="fade-left">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift reveal-right">
                     <div class="md:flex md:flex-row-reverse">
-                        <div class="md:w-1/3 bg-gradient-to-br from-green-500 to-green-700 p-12 flex items-center justify-center">
-                            <i class="fas fa-hospital text-8xl text-white opacity-50"></i>
+                        <div class="md:w-1/3 bg-gradient-to-br from-green-500 to-green-700 p-12 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-hospital text-9xl text-white opacity-30"></i>
+                            <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
                         </div>
                         <div class="md:w-2/3 p-8 md:p-12">
                             <div class="badge bg-green-100 text-green-700 mb-4">
                                 <i class="fas fa-heartbeat mr-2"></i> National Healthcare
                             </div>
-                            <h3 class="text-3xl font-bold mb-4 text-civ-purple">Ethiopia Health-Pay Platform</h3>
+                            <h3 class="text-3xl font-bold font-display mb-4 text-civ-purple">Ethiopia Health-Pay Platform</h3>
                             <p class="text-gray-600 mb-6 text-lg">
                                 Nationwide digital health payment system for Ethiopia's Ministry of Health enabling
                                 CBHI enrollment, premium collection, and claims processing for millions of citizens.
                             </p>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">Millions</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold font-display text-civ-purple">Millions</div>
                                     <div class="text-sm text-gray-600">Citizens Served</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">National</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold font-display text-civ-purple">National</div>
                                     <div class="text-sm text-gray-600">Scale</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">HIPAA</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold font-display text-civ-purple">HIPAA</div>
                                     <div class="text-sm text-gray-600">Compliant</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">2025</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold font-display text-civ-purple">2025</div>
                                     <div class="text-sm text-gray-600">Deployed</div>
                                 </div>
                             </div>
@@ -385,35 +625,36 @@
                 </div>
 
                 <!-- Project 3: Government -->
-                <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover" data-aos="fade-right">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover-lift reveal-left">
                     <div class="md:flex">
-                        <div class="md:w-1/3 bg-gradient-to-br from-civ-purple to-civ-purple-dark p-12 flex items-center justify-center">
-                            <i class="fas fa-landmark text-8xl text-white opacity-50"></i>
+                        <div class="md:w-1/3 gradient-bg p-12 flex items-center justify-center relative overflow-hidden">
+                            <i class="fas fa-landmark text-9xl text-white opacity-30"></i>
+                            <div class="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
                         </div>
                         <div class="md:w-2/3 p-8 md:p-12">
                             <div class="badge bg-purple-100 text-civ-purple mb-4">
                                 <i class="fas fa-flag mr-2"></i> Government Digital Transformation
                             </div>
-                            <h3 class="text-3xl font-bold mb-4 text-civ-purple">Uganda Ministry of ICT Platform</h3>
+                            <h3 class="text-3xl font-bold font-display mb-4 text-civ-purple">Uganda Ministry of ICT Platform</h3>
                             <p class="text-gray-600 mb-6 text-lg">
                                 Digital transformation platform serving 2,000+ government employees with role-based
                                 access controls and cross-departmental API integration.
                             </p>
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">60%</div>
-                                    <div class="text-sm text-gray-600">Efficiency Gain</div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold font-display text-civ-purple counter">60</div>
+                                    <div class="text-sm text-gray-600">% Efficiency Gain</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">2,000+</div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold font-display text-civ-purple counter">2000</div>
                                     <div class="text-sm text-gray-600">Users</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">100%</div>
-                                    <div class="text-sm text-gray-600">On-Time</div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold font-display text-civ-purple counter">100</div>
+                                    <div class="text-sm text-gray-600">% On-Time</div>
                                 </div>
-                                <div>
-                                    <div class="text-2xl font-bold text-civ-purple">Gov</div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold font-display text-civ-purple">Gov</div>
                                     <div class="text-sm text-gray-600">Grade Security</div>
                                 </div>
                             </div>
@@ -425,109 +666,105 @@
     </section>
 
     <!-- Technical Approach -->
-    <section id="approach" class="py-20 bg-white">
+    <section id="approach" class="py-20 bg-white relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    Our <span class="gradient-text">Technical Approach</span>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
+                    Our <span class="animated-gradient-text">Technical Approach</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Enterprise-grade architecture designed for cultural preservation and national scale
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-                <div data-aos="fade-right">
-                    <h3 class="text-3xl font-bold mb-6 text-civ-purple">Platform Features</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-cloud-upload-alt text-civ-orange"></i>
+            <div class="grid md:grid-cols-2 gap-12 items-start mb-16">
+                <div class="reveal-left">
+                    <h3 class="text-3xl font-bold font-display mb-6 text-civ-purple">Platform Features</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-cloud-upload-alt text-civ-orange text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Multi-Media Uploads</h4>
+                                <h4 class="font-bold font-display text-lg mb-1">Multi-Media Uploads</h4>
                                 <p class="text-gray-600">Image & video support with virus scanning and bandwidth optimization</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-users text-civ-orange"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-civ-orange text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Community Validation</h4>
+                                <h4 class="font-bold font-display text-lg mb-1">Community Validation</h4>
                                 <p class="text-gray-600">Local community confirmation of generosity acts</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-share-alt text-civ-orange"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-share-alt text-civ-orange text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Social Integration</h4>
+                                <h4 class="font-bold font-display text-lg mb-1">Social Integration</h4>
                                 <p class="text-gray-600">WhatsApp, Facebook, X, Instagram sharing</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-trophy text-civ-orange"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-trophy text-civ-orange text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Cultural Gamification</h4>
+                                <h4 class="font-bold font-display text-lg mb-1">Cultural Gamification</h4>
                                 <p class="text-gray-600">Ubuntu-aligned badges and community recognition</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-chart-bar text-civ-orange"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-chart-bar text-civ-orange text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg mb-1">Analytics Engine</h4>
+                                <h4 class="font-bold font-display text-lg mb-1">Analytics Engine</h4>
                                 <p class="text-gray-600">Philanthropy patterns and demographic insights</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div data-aos="fade-left">
-                    <h3 class="text-3xl font-bold mb-6 text-civ-purple">Security & Compliance</h3>
-                    <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-3xl p-8">
+                <div class="reveal-right">
+                    <h3 class="text-3xl font-bold font-display mb-6 text-civ-purple">Security & Compliance</h3>
+                    <div class="gradient-bg text-white rounded-3xl p-8 hover-lift glow-hover">
                         <div class="space-y-6">
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-shield-alt text-2xl text-civ-orange"></i>
+                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                                <i class="fas fa-shield-alt text-3xl text-civ-orange"></i>
                                 <div>
-                                    <div class="font-bold">Uganda Data Protection Act</div>
+                                    <div class="font-bold font-display">Uganda Data Protection Act</div>
                                     <div class="text-sm text-purple-200">Full compliance implementation</div>
                                 </div>
                             </div>
-                            <div class="section-divider"></div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-lock text-2xl text-civ-orange"></i>
+                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                                <i class="fas fa-lock text-3xl text-civ-orange"></i>
                                 <div>
-                                    <div class="font-bold">Banking-Grade Security</div>
+                                    <div class="font-bold font-display">Banking-Grade Security</div>
                                     <div class="text-sm text-purple-200">UK FSA proven standards</div>
                                 </div>
                             </div>
-                            <div class="section-divider"></div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-globe text-2xl text-civ-orange"></i>
+                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                                <i class="fas fa-globe text-3xl text-civ-orange"></i>
                                 <div>
-                                    <div class="font-bold">GDPR Compliance</div>
+                                    <div class="font-bold font-display">GDPR Compliance</div>
                                     <div class="text-sm text-purple-200">International data protection</div>
                                 </div>
                             </div>
-                            <div class="section-divider"></div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-server text-2xl text-civ-orange"></i>
+                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                                <i class="fas fa-server text-3xl text-civ-orange"></i>
                                 <div>
-                                    <div class="font-bold">Multi-Cloud Architecture</div>
+                                    <div class="font-bold font-display">Multi-Cloud Architecture</div>
                                     <div class="text-sm text-purple-200">Firebase + AWS + Azure redundancy</div>
                                 </div>
                             </div>
-                            <div class="section-divider"></div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-sync text-2xl text-civ-orange"></i>
+                            <div class="flex items-center space-x-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                                <i class="fas fa-sync text-3xl text-civ-orange"></i>
                                 <div>
-                                    <div class="font-bold">99.9% Uptime SLA</div>
+                                    <div class="font-bold font-display">99.9% Uptime SLA</div>
                                     <div class="text-sm text-purple-200">Geo-distributed backups</div>
                                 </div>
                             </div>
@@ -537,31 +774,31 @@
             </div>
 
             <!-- Timeline -->
-            <div class="bg-gray-50 rounded-3xl p-8 md:p-12" data-aos="fade-up">
-                <h3 class="text-3xl font-bold mb-8 text-center text-civ-purple">120-Day Delivery Timeline</h3>
-                <div class="grid md:grid-cols-4 gap-6">
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 md:p-12 reveal-scale hover-lift">
+                <h3 class="text-3xl md:text-4xl font-bold font-display mb-12 text-center text-civ-purple">120-Day Delivery Timeline</h3>
+                <div class="grid md:grid-cols-4 gap-8">
                     <div class="text-center">
-                        <div class="h-20 w-20 rounded-full bg-civ-purple text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
-                        <h4 class="font-bold mb-2">Foundation</h4>
-                        <p class="text-sm text-gray-600 mb-2">30 Days</p>
+                        <div class="h-24 w-24 rounded-full gradient-bg text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">1</div>
+                        <h4 class="font-bold font-display text-lg mb-2">Foundation</h4>
+                        <p class="text-sm text-gray-600 mb-2 font-semibold">30 Days</p>
                         <p class="text-xs text-gray-500">Inception, UX/UI Design, Architecture</p>
                     </div>
                     <div class="text-center">
-                        <div class="h-20 w-20 rounded-full bg-civ-orange text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-                        <h4 class="font-bold mb-2">Development</h4>
-                        <p class="text-sm text-gray-600 mb-2">60 Days</p>
+                        <div class="h-24 w-24 rounded-full bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">2</div>
+                        <h4 class="font-bold font-display text-lg mb-2">Development</h4>
+                        <p class="text-sm text-gray-600 mb-2 font-semibold">60 Days</p>
                         <p class="text-xs text-gray-500">MVP, Core Features, Testing</p>
                     </div>
                     <div class="text-center">
-                        <div class="h-20 w-20 rounded-full bg-civ-purple text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
-                        <h4 class="font-bold mb-2">Integration</h4>
-                        <p class="text-sm text-gray-600 mb-2">20 Days</p>
+                        <div class="h-24 w-24 rounded-full gradient-bg text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">3</div>
+                        <h4 class="font-bold font-display text-lg mb-2">Integration</h4>
+                        <p class="text-sm text-gray-600 mb-2 font-semibold">20 Days</p>
                         <p class="text-xs text-gray-500">Final Platform, Admin Dashboard</p>
                     </div>
                     <div class="text-center">
-                        <div class="h-20 w-20 rounded-full bg-civ-orange text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
-                        <h4 class="font-bold mb-2">Launch</h4>
-                        <p class="text-sm text-gray-600 mb-2">10 Days</p>
+                        <div class="h-24 w-24 rounded-full bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white flex items-center justify-center text-3xl font-bold font-display mx-auto mb-4 pulse-animation glow">4</div>
+                        <h4 class="font-bold font-display text-lg mb-2">Launch</h4>
+                        <p class="text-sm text-gray-600 mb-2 font-semibold">10 Days</p>
                         <p class="text-xs text-gray-500">Deployment, Training, Documentation</p>
                     </div>
                 </div>
@@ -570,10 +807,18 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-20 gradient-bg text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+    <section class="py-20 gradient-bg text-white relative overflow-hidden">
+        <div class="particles">
+            <div class="particle" style="left: 15%; animation-delay: 0s;"></div>
+            <div class="particle" style="left: 35%; animation-delay: 3s;"></div>
+            <div class="particle" style="left: 55%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="left: 75%; animation-delay: 4s;"></div>
+            <div class="particle" style="left: 85%; animation-delay: 2s;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
                     Why Information Village Limited
                 </h2>
                 <p class="text-xl text-purple-100 max-w-3xl mx-auto">
@@ -582,34 +827,34 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-award text-5xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Cultural Expertise</h3>
+                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                    <i class="fas fa-award text-6xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-3">Cultural Expertise</h3>
                     <p class="text-purple-100">Deep understanding of African generosity traditions and Ubuntu philosophy</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-certificate text-5xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">International Standards</h3>
+                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                    <i class="fas fa-certificate text-6xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-3">International Standards</h3>
                     <p class="text-purple-100">UK FSA compliance and multi-jurisdictional regulatory expertise</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-rocket text-5xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Proven Delivery</h3>
+                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                    <i class="fas fa-rocket text-6xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-3">Proven Delivery</h3>
                     <p class="text-purple-100">9+ years of consistent on-time delivery with 100% project success rate</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fas fa-users-cog text-5xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">National Scale Experience</h3>
+                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                    <i class="fas fa-users-cog text-6xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-3">National Scale Experience</h3>
                     <p class="text-purple-100">Successfully served millions of users across healthcare and government</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="500">
-                    <i class="fas fa-handshake text-5xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Community-Centered</h3>
+                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                    <i class="fas fa-handshake text-6xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-3">Community-Centered</h3>
                     <p class="text-purple-100">Platforms designed to strengthen community bonds and social capital</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="600">
-                    <i class="fas fa-life-ring text-5xl text-civ-orange mb-4"></i>
-                    <h3 class="text-xl font-bold mb-3">Comprehensive Support</h3>
+                <div class="glass rounded-2xl p-8 border-2 border-white/30 hover-lift reveal-scale">
+                    <i class="fas fa-life-ring text-6xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold font-display mb-3">Comprehensive Support</h3>
                     <p class="text-purple-100">24/7 technical support with 6-month maintenance and 99.9% uptime SLA</p>
                 </div>
             </div>
@@ -620,9 +865,9 @@
     <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        Let's Build <span class="gradient-text">OmutimaOmugabi</span> Together
+                <div class="reveal-left">
+                    <h2 class="text-4xl md:text-6xl font-bold font-display mb-6">
+                        Let's Build <span class="animated-gradient-text">OmutimaOmugabi</span> Together
                     </h2>
                     <p class="text-xl text-gray-600 mb-8">
                         Partner with Cultural Technology Specialists who combine deep Ubuntu philosophy
@@ -630,47 +875,47 @@
                     </p>
 
                     <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-envelope text-civ-purple"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-civ-purple text-xl"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-lg">Email</div>
-                                <a href="mailto:info@informationvillagelimited.com" class="text-civ-purple hover:text-civ-purple-dark">
+                                <div class="font-bold font-display text-lg">Email</div>
+                                <a href="mailto:info@informationvillagelimited.com" class="text-civ-purple hover:text-civ-purple-dark transition">
                                     info@informationvillagelimited.com
                                 </a>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-phone text-civ-purple"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-civ-purple text-xl"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-lg">Phone</div>
-                                <a href="tel:+256773185503" class="text-civ-purple hover:text-civ-purple-dark">
+                                <div class="font-bold font-display text-lg">Phone</div>
+                                <a href="tel:+256773185503" class="text-civ-purple hover:text-civ-purple-dark transition">
                                     +256 773 185 503
                                 </a>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-map-marker-alt text-civ-purple"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-civ-purple text-xl"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-lg">Location</div>
+                                <div class="font-bold font-display text-lg">Location</div>
                                 <div class="text-gray-600">Parliament Avenue, Kampala, Uganda</div>
                             </div>
                         </div>
 
-                        <div class="flex items-start space-x-4">
-                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
-                                <i class="fab fa-linkedin text-civ-purple"></i>
+                        <div class="flex items-start space-x-4 hover-lift bg-gray-50 p-4 rounded-xl">
+                            <div class="h-14 w-14 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-linkedin text-civ-purple text-xl"></i>
                             </div>
                             <div>
-                                <div class="font-bold text-lg">LinkedIn</div>
-                                <a href="https://ug.linkedin.com/company/information-village-ivilleinc" target="_blank" class="text-civ-purple hover:text-civ-purple-dark">
+                                <div class="font-bold font-display text-lg">LinkedIn</div>
+                                <a href="https://ug.linkedin.com/company/information-village-ivilleinc" target="_blank" class="text-civ-purple hover:text-civ-purple-dark transition">
                                     Information Village Limited
                                 </a>
                             </div>
@@ -678,35 +923,35 @@
                     </div>
                 </div>
 
-                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark rounded-3xl p-8 md:p-12 text-white" data-aos="fade-left">
-                    <h3 class="text-3xl font-bold mb-6">Technical Lead</h3>
+                <div class="gradient-bg rounded-3xl p-8 md:p-12 text-white hover-lift glow-hover reveal-right">
+                    <h3 class="text-3xl font-bold font-display mb-6">Technical Lead</h3>
                     <div class="space-y-4 mb-8">
                         <div>
-                            <div class="text-2xl font-bold">Echeru Rodney</div>
-                            <div class="text-purple-200">Founder & Technical Lead</div>
+                            <div class="text-3xl font-bold font-display">Echeru Rodney</div>
+                            <div class="text-purple-200 text-lg">Founder & Technical Lead</div>
                         </div>
-                        <div class="section-divider"></div>
-                        <div class="space-y-2">
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-envelope text-civ-orange"></i>
+                        <div class="section-divider my-4"></div>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
+                                <i class="fas fa-envelope text-civ-orange text-lg"></i>
                                 <a href="mailto:rodneyecheru@gmail.com" class="hover:text-civ-orange transition">
                                     rodneyecheru@gmail.com
                                 </a>
                             </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fas fa-phone text-civ-orange"></i>
+                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
+                                <i class="fas fa-phone text-civ-orange text-lg"></i>
                                 <a href="tel:+256705283258" class="hover:text-civ-orange transition">
                                     +256 705 283 258
                                 </a>
                             </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fab fa-linkedin text-civ-orange"></i>
+                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
+                                <i class="fab fa-linkedin text-civ-orange text-lg"></i>
                                 <a href="https://www.linkedin.com/in/echeru-rodney" target="_blank" class="hover:text-civ-orange transition">
                                     linkedin.com/in/echeru-rodney
                                 </a>
                             </div>
-                            <div class="flex items-center space-x-3">
-                                <i class="fab fa-github text-civ-orange"></i>
+                            <div class="flex items-center space-x-3 hover-lift bg-white/10 p-3 rounded-lg">
+                                <i class="fab fa-github text-civ-orange text-lg"></i>
                                 <a href="https://github.com/RodneyEcheru" target="_blank" class="hover:text-civ-orange transition">
                                     github.com/RodneyEcheru
                                 </a>
@@ -714,13 +959,13 @@
                         </div>
                     </div>
 
-                    <div class="bg-white/10 rounded-2xl p-6 border-2 border-white/20">
-                        <div class="text-sm text-purple-200 mb-2">10+ Years Experience</div>
-                        <div class="grid grid-cols-2 gap-4 text-sm">
-                            <div>✓ International Banking</div>
-                            <div>✓ National Healthcare</div>
-                            <div>✓ Government Digital</div>
-                            <div>✓ Enterprise Security</div>
+                    <div class="glass rounded-2xl p-6 border-2 border-white/30">
+                        <div class="text-sm text-purple-200 mb-3 font-semibold">10+ Years Experience</div>
+                        <div class="grid grid-cols-2 gap-3 text-sm">
+                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> International Banking</div>
+                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> National Healthcare</div>
+                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> Government Digital</div>
+                            <div class="flex items-center"><i class="fas fa-check-circle text-civ-orange mr-2"></i> Enterprise Security</div>
                         </div>
                     </div>
                 </div>
@@ -738,7 +983,7 @@
                             <i class="fas fa-heart text-white text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">OmutimaOmugabi</h3>
+                            <h3 class="text-xl font-bold font-display">OmutimaOmugabi</h3>
                             <p class="text-sm text-gray-400">Proposal by Information Village</p>
                         </div>
                     </div>
@@ -748,7 +993,7 @@
                 </div>
 
                 <div>
-                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <h4 class="font-bold font-display mb-4">Quick Links</h4>
                     <div class="space-y-2 text-sm">
                         <a href="#vision" class="block text-gray-400 hover:text-civ-orange transition">Vision</a>
                         <a href="#capabilities" class="block text-gray-400 hover:text-civ-orange transition">Capabilities</a>
@@ -759,13 +1004,13 @@
                 </div>
 
                 <div>
-                    <h4 class="font-bold mb-4">Company Info</h4>
+                    <h4 class="font-bold font-display mb-4">Company Info</h4>
                     <div class="space-y-2 text-sm text-gray-400">
-                        <div>Established: 2015</div>
-                        <div>9+ Years of Excellence</div>
-                        <div>4 Countries Deployment</div>
-                        <div>10M+ Users Served</div>
-                        <div>99.9% Uptime Achievement</div>
+                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> Established: 2015</div>
+                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 9+ Years of Excellence</div>
+                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 4 Countries Deployment</div>
+                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 10M+ Users Served</div>
+                        <div class="flex items-center"><i class="fas fa-check text-civ-orange mr-2"></i> 99.9% Uptime Achievement</div>
                     </div>
                 </div>
             </div>
@@ -776,12 +1021,129 @@
         </div>
     </footer>
 
-    <!-- Initialize AOS -->
+    <!-- GSAP ScrollTrigger Animations -->
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
+        // Register ScrollTrigger plugin
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Scroll Progress Bar
+        gsap.to('.scroll-progress', {
+            width: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 0.3
+            }
+        });
+
+        // Navbar Hide/Show on Scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const navbar = document.getElementById('navbar');
+
+            if (currentScroll <= 0) {
+                navbar.classList.remove('navbar-hidden');
+                return;
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('navbar-hidden');
+            } else {
+                navbar.classList.remove('navbar-hidden');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Reveal Animations
+        gsap.utils.toArray('.reveal').forEach((elem) => {
+            gsap.from(elem, {
+                opacity: 0,
+                y: 100,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 85%',
+                    end: 'top 60%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Reveal Left
+        gsap.utils.toArray('.reveal-left').forEach((elem) => {
+            gsap.from(elem, {
+                opacity: 0,
+                x: -100,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Reveal Right
+        gsap.utils.toArray('.reveal-right').forEach((elem) => {
+            gsap.from(elem, {
+                opacity: 0,
+                x: 100,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Reveal Scale
+        gsap.utils.toArray('.reveal-scale').forEach((elem, index) => {
+            gsap.from(elem, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.8,
+                delay: index * 0.1,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Parallax Effects
+        gsap.utils.toArray('.parallax-slow').forEach((elem) => {
+            gsap.to(elem, {
+                y: -100,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
+        });
+
+        gsap.utils.toArray('.parallax-fast').forEach((elem) => {
+            gsap.to(elem, {
+                y: 100,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top bottom',
+                    end: 'bottom top',
+                    scrub: 1
+                }
+            });
         });
 
         // Smooth scroll for navigation links
@@ -790,25 +1152,28 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const navHeight = document.getElementById('navbar').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Counter animation
-        function animateCounter(element, target) {
+        // Counter Animation
+        function animateCounter(element, target, suffix = '') {
             let current = 0;
-            const increment = target / 50;
+            const increment = target / 60;
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
-                    element.textContent = target;
+                    element.textContent = Math.floor(target) + suffix;
                     clearInterval(timer);
                 } else {
-                    element.textContent = Math.floor(current);
+                    element.textContent = Math.floor(current) + suffix;
                 }
             }, 30);
         }
@@ -817,20 +1182,68 @@
         const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('.counter');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.textContent.replace(/\D/g, '')) || 0;
-                        if (target > 0) {
-                            animateCounter(counter, target);
-                        }
-                    });
-                    counterObserver.unobserve(entry.target);
+                    const element = entry.target;
+                    const text = element.textContent;
+
+                    // Extract number and suffix
+                    const match = text.match(/(\d+)(.*)/);
+                    if (match) {
+                        const target = parseInt(match[1]);
+                        const suffix = match[2];
+                        animateCounter(element, target, suffix);
+                    }
+
+                    counterObserver.unobserve(element);
                 }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Magnetic Button Effect
+        document.querySelectorAll('.magnetic-btn').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                gsap.to(btn, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3
+                });
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.3
+                });
             });
         });
 
-        document.querySelectorAll('.counter').forEach(counter => {
-            counterObserver.observe(counter.closest('section') || counter);
+        // Hover Lift 3D Effect
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                gsap.to(this, {
+                    y: -15,
+                    scale: 1.02,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            });
+
+            card.addEventListener('mouseleave', function() {
+                gsap.to(this, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            });
         });
     </script>
 </body>
