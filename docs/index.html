@@ -172,7 +172,7 @@
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
         }
 
-        /* Micro-animations */
+        /* Enhanced Micro-animations */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
@@ -189,6 +189,109 @@
 
         .pulse-glow {
             animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            75% { transform: rotate(3deg); }
+        }
+
+        .wiggle-animation {
+            animation: wiggle 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .bounce-subtle {
+            animation: bounce-subtle 2s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .gradient-animated {
+            background-size: 200% 200%;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .shimmer-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer-effect::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes icon-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .icon-pulse {
+            animation: icon-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes text-shimmer {
+            0% { background-position: -500%; }
+            100% { background-position: 500%; }
+        }
+
+        .text-shimmer {
+            background: linear-gradient(
+                90deg,
+                #6852a2 0%,
+                #faa92b 25%,
+                #6852a2 50%,
+                #faa92b 75%,
+                #6852a2 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: text-shimmer 4s linear infinite;
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .rotate-slow {
+            animation: rotate-slow 20s linear infinite;
+        }
+
+        @keyframes scale-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .scale-pulse {
+            animation: scale-pulse 3s ease-in-out infinite;
         }
 
         /* Badge */
@@ -231,8 +334,32 @@
             transform: rotate(5deg) scale(1.1);
         }
 
-        /* Reveal animations */
+        /* Reveal animations - Start hidden for GSAP */
         .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        /* Ensure elements are visible when animations complete */
+        .reveal.animated,
+        .reveal-left.animated,
+        .reveal-right.animated,
+        .reveal-scale.animated {
             opacity: 1;
             transform: none;
         }
@@ -295,7 +422,7 @@
 
                 <h1 class="text-5xl md:text-7xl font-bold font-display mb-6 leading-tight">
                     Celebrating Uganda's
-                    <span class="text-omutima-orange block mt-2">Generous Spirit</span>
+                    <span class="text-shimmer block mt-2">Generous Spirit</span>
                 </h1>
 
                 <p class="text-xl md:text-2xl mb-12 text-purple-100 max-w-3xl mx-auto">
@@ -315,9 +442,12 @@
             </div>
         </div>
 
-        <!-- Floating Elements -->
-        <div class="absolute top-20 left-10 w-20 h-20 bg-omutima-orange/20 rounded-full blur-xl float-animation"></div>
+        <!-- Enhanced Floating Elements -->
+        <div class="absolute top-20 left-10 w-20 h-20 bg-omutima-orange/30 rounded-full blur-xl float-animation"></div>
         <div class="absolute bottom-20 right-10 w-32 h-32 bg-white/10 rounded-full blur-2xl float-animation" style="animation-delay: 1s;"></div>
+        <div class="absolute top-40 right-20 w-16 h-16 bg-omutima-purple/20 rounded-full blur-lg float-animation" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-40 left-20 w-24 h-24 bg-omutima-orange/20 rounded-full blur-xl bounce-subtle"></div>
+        <div class="absolute top-1/2 right-1/4 w-12 h-12 bg-white/10 rounded-full blur-md rotate-slow"></div>
     </section>
 
     <!-- Vision Section -->
@@ -337,9 +467,9 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="feature-card text-center reveal">
-                    <div class="icon-container bg-gradient-to-br from-omutima-purple to-omutima-purple-dark text-white mx-auto mb-6">
-                        <i class="fas fa-users"></i>
+                <div class="feature-card text-center reveal shimmer-effect">
+                    <div class="icon-container bg-gradient-to-br from-omutima-purple to-omutima-purple-dark text-white mx-auto mb-6 scale-pulse">
+                        <i class="fas fa-users icon-pulse"></i>
                     </div>
                     <h3 class="text-2xl font-bold font-display mb-4 text-omutima-purple">Community-Centered</h3>
                     <p class="text-gray-600">
@@ -347,9 +477,9 @@
                     </p>
                 </div>
 
-                <div class="feature-card text-center reveal" style="transition-delay: 0.1s;">
-                    <div class="icon-container bg-gradient-to-br from-omutima-orange to-omutima-orange-dark text-white mx-auto mb-6">
-                        <i class="fas fa-book-heart"></i>
+                <div class="feature-card text-center reveal shimmer-effect" style="transition-delay: 0.1s;">
+                    <div class="icon-container bg-gradient-to-br from-omutima-orange to-omutima-orange-dark text-white mx-auto mb-6 scale-pulse" style="animation-delay: 0.5s;">
+                        <i class="fas fa-book-heart icon-pulse" style="animation-delay: 0.5s;"></i>
                     </div>
                     <h3 class="text-2xl font-bold font-display mb-4 text-omutima-purple">Story Preservation</h3>
                     <p class="text-gray-600">
@@ -357,9 +487,9 @@
                     </p>
                 </div>
 
-                <div class="feature-card text-center reveal" style="transition-delay: 0.2s;">
-                    <div class="icon-container bg-gradient-to-br from-purple-500 to-pink-500 text-white mx-auto mb-6">
-                        <i class="fas fa-heart-pulse"></i>
+                <div class="feature-card text-center reveal shimmer-effect" style="transition-delay: 0.2s;">
+                    <div class="icon-container bg-gradient-to-br from-purple-500 to-pink-500 text-white mx-auto mb-6 scale-pulse" style="animation-delay: 1s;">
+                        <i class="fas fa-heart-pulse icon-pulse" style="animation-delay: 1s;"></i>
                     </div>
                     <h3 class="text-2xl font-bold font-display mb-4 text-omutima-purple">Social Impact</h3>
                     <p class="text-gray-600">
@@ -944,18 +1074,69 @@
             scrollProgress.style.width = scrollPercent + '%';
         });
 
-        // Reveal animations on scroll
-        gsap.utils.toArray('.reveal').forEach((elem) => {
-            gsap.from(elem, {
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
+        // Enhanced reveal animations with stagger
+        gsap.utils.toArray('.reveal').forEach((elem, index) => {
+            gsap.to(elem, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: elem,
-                    start: 'top 85%',
-                    end: 'top 60%',
-                    toggleActions: 'play none none reverse'
+                    start: 'top 90%',
+                    end: 'top 20%',
+                    toggleActions: 'play none none reverse',
+                    onEnter: () => elem.classList.add('animated'),
+                    onLeaveBack: () => elem.classList.remove('animated')
+                },
+                delay: index * 0.05 // Stagger effect
+            });
+        });
+
+        // Reveal left animations
+        gsap.utils.toArray('.reveal-left').forEach((elem) => {
+            gsap.to(elem, {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse',
+                    onEnter: () => elem.classList.add('animated')
+                }
+            });
+        });
+
+        // Reveal right animations
+        gsap.utils.toArray('.reveal-right').forEach((elem) => {
+            gsap.to(elem, {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse',
+                    onEnter: () => elem.classList.add('animated')
+                }
+            });
+        });
+
+        // Reveal scale animations
+        gsap.utils.toArray('.reveal-scale').forEach((elem) => {
+            gsap.to(elem, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.8,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: elem,
+                    start: 'top 90%',
+                    toggleActions: 'play none none reverse',
+                    onEnter: () => elem.classList.add('animated')
                 }
             });
         });
