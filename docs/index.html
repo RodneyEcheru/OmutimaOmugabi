@@ -255,25 +255,29 @@
             animation: icon-pulse 2s ease-in-out infinite;
         }
 
-        @keyframes text-shimmer {
-            0% { background-position: -500%; }
-            100% { background-position: 500%; }
+        @keyframes text-glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(250, 169, 43, 0.3),
+                            0 0 40px rgba(250, 169, 43, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(250, 169, 43, 0.5),
+                            0 0 60px rgba(250, 169, 43, 0.3),
+                            0 0 80px rgba(250, 169, 43, 0.2);
+            }
         }
 
         .text-shimmer {
             background: linear-gradient(
-                90deg,
-                #6852a2 0%,
-                #faa92b 25%,
-                #6852a2 50%,
-                #faa92b 75%,
-                #6852a2 100%
+                135deg,
+                #faa92b 0%,
+                #ffb84d 50%,
+                #faa92b 100%
             );
-            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: text-shimmer 4s linear infinite;
+            animation: text-glow 4s ease-in-out infinite;
         }
 
         @keyframes rotate-slow {
@@ -283,6 +287,148 @@
 
         .rotate-slow {
             animation: rotate-slow 20s linear infinite;
+        }
+
+        /* Elegant Glowing Border Animation */
+        @keyframes border-glow {
+            0%, 100% {
+                box-shadow:
+                    0 0 20px rgba(250, 169, 43, 0.4),
+                    0 0 40px rgba(250, 169, 43, 0.2),
+                    inset 0 0 15px rgba(250, 169, 43, 0.1);
+                border-color: rgba(250, 169, 43, 0.6);
+            }
+            50% {
+                box-shadow:
+                    0 0 25px rgba(104, 82, 162, 0.5),
+                    0 0 50px rgba(104, 82, 162, 0.3),
+                    inset 0 0 20px rgba(104, 82, 162, 0.15);
+                border-color: rgba(104, 82, 162, 0.7);
+            }
+        }
+
+        .border-glow-animation {
+            position: relative;
+            animation: border-glow 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        /* Lower Thirds Effect */
+        .lower-thirds-container {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            min-height: 1.2em;
+        }
+
+        .lower-thirds-text {
+            display: inline-block;
+            position: relative;
+            background: linear-gradient(
+                135deg,
+                #faa92b 0%,
+                #ffb84d 50%,
+                #faa92b 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            white-space: nowrap;
+            padding: 0 20px;
+        }
+
+        .lower-thirds-text::before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            background: linear-gradient(90deg,
+                rgba(250, 169, 43, 0.3),
+                rgba(104, 82, 162, 0.3)
+            );
+            animation: slide-reveal 0.6s ease-out forwards;
+        }
+
+        .lower-thirds-bar {
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 3px;
+            background: linear-gradient(90deg, #faa92b, #6852a2);
+            animation: bar-wipe 0.6s ease-out forwards;
+        }
+
+        @keyframes slide-reveal {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes bar-wipe {
+            0% {
+                width: 0%;
+                opacity: 1;
+            }
+            100% {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        /* Fade out animation */
+        .lower-thirds-text.fade-out {
+            animation: fade-out 0.4s ease-out forwards;
+        }
+
+        @keyframes fade-out {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Hero entrance animations */
+        .hero-video-bg {
+            opacity: 0;
+        }
+
+        .hero-overlay {
+            opacity: 0;
+        }
+
+        .hero-badge {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+        }
+
+        .hero-title {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-animated-text {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-star {
+            opacity: 0;
+            transform: scale(0.5) rotate(-180deg);
+        }
+
+        .hero-badge-text {
+            opacity: 0;
+            transform: translateX(-20px);
         }
 
         @keyframes scale-pulse {
@@ -414,30 +560,35 @@
     <!-- Hero Section -->
     <section class="pt-32 pb-20 text-white relative overflow-hidden min-h-screen flex items-center">
         <!-- YouTube Video Background -->
-        <div class="absolute inset-0 w-full h-full overflow-hidden">
+        <div class="absolute inset-0 w-full h-full overflow-hidden hero-video-bg">
             <iframe
                 id="hero-video"
                 class="absolute top-1/2 left-1/2 w-screen h-screen min-w-full min-h-full"
-                style="transform: translate(-50%, -50%) scale(1.5);"
+                style="transform: translate(-50%, -50%) scale(1.5); filter: blur(4px);"
                 src="https://www.youtube.com/embed/EqbplZwDDf4?autoplay=1&mute=1&loop=1&playlist=EqbplZwDDf4&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
             </iframe>
             <!-- Dark overlay for text readability -->
-            <div class="absolute inset-0 bg-gradient-to-br from-omutima-purple/80 via-omutima-purple/70 to-omutima-purple-dark/80"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-omutima-purple/80 via-omutima-purple/70 to-omutima-purple-dark/80 hero-overlay"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-5xl mx-auto text-center">
-                <div class="badge-tag bg-white/20 backdrop-blur-sm border border-white/30 text-white mb-8 mx-auto">
-                    <i class="fas fa-star"></i>
-                    <span>Platform Design Showcase</span>
+                <div class="badge-tag bg-white/20 backdrop-blur-sm border border-white/30 text-white mb-8 mx-auto border-glow-animation hero-badge">
+                    <i class="fas fa-star hero-star"></i>
+                    <span class="hero-badge-text">Platform Design Showcase</span>
                 </div>
 
                 <h1 class="text-5xl md:text-7xl font-bold font-display leading-tight">
-                    Celebrating Uganda's
-                    <span class="text-shimmer block mt-2">Generous Spirit</span>
+                    <span class="hero-title">Celebrating Uganda's</span>
+                    <span class="block mt-2 hero-animated-text">
+                        <span class="lower-thirds-container">
+                            <span class="lower-thirds-text" id="lower-thirds"></span>
+                            <span class="lower-thirds-bar"></span>
+                        </span>
+                    </span>
                 </h1>
             </div>
         </div>
@@ -1274,6 +1425,100 @@
                 scrub: 1
             }
         });
+
+        // Lower Thirds Effect
+        const phrases = ['Generous Spirit', 'Ubuntu Values', 'Community Love'];
+        let currentPhraseIndex = 0;
+        const displayDuration = 3000; // How long to show each phrase
+
+        function showLowerThirds() {
+            const lowerThirdsElement = document.getElementById('lower-thirds');
+            const container = lowerThirdsElement.parentNode;
+
+            // Set text
+            lowerThirdsElement.textContent = phrases[currentPhraseIndex];
+            lowerThirdsElement.classList.remove('fade-out');
+
+            // Get the bar element
+            const bar = lowerThirdsElement.nextElementSibling;
+
+            // Reset animations by cloning
+            const newText = lowerThirdsElement.cloneNode(true);
+            const newBar = bar.cloneNode(true);
+            container.replaceChild(newText, lowerThirdsElement);
+            container.replaceChild(newBar, bar);
+
+            // Schedule fade out and next phrase
+            setTimeout(() => {
+                const currentElement = document.getElementById('lower-thirds');
+                currentElement.classList.add('fade-out');
+                setTimeout(() => {
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    showLowerThirds();
+                }, 400); // Match fade-out duration
+            }, displayDuration);
+        }
+
+        // Hero Entrance Animation Timeline
+        const heroTimeline = gsap.timeline({
+            defaults: { ease: 'power3.out' },
+            delay: 0.3 // Small delay before starting
+        });
+
+        heroTimeline
+            // 1. Video background fades in with blur effect
+            .to('.hero-video-bg', {
+                opacity: 1,
+                duration: 1,
+                ease: 'power2.inOut'
+            })
+            // 2. Purple overlay fades in elegantly
+            .to('.hero-overlay', {
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power2.inOut'
+            }, '-=0.5')
+            // 3. Badge container slides up and scales in
+            .to('.hero-badge', {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.7,
+                ease: 'back.out(1.4)'
+            }, '-=0.3')
+            // 4. Star icon rotates and scales in
+            .to('.hero-star', {
+                opacity: 1,
+                scale: 1,
+                rotation: 0,
+                duration: 0.5,
+                ease: 'back.out(1.7)'
+            }, '-=0.4')
+            // 5. Badge text slides in from left
+            .to('.hero-badge-text', {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+                ease: 'power2.out'
+            }, '-=0.3')
+            // 6. "Celebrating Uganda's" slides up with slight bounce
+            .to('.hero-title', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.2')
+            // 7. Animated text container slides up smoothly
+            .to('.hero-animated-text', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out',
+                onComplete: () => {
+                    // Start lower thirds animation after entrance is complete
+                    setTimeout(showLowerThirds, 400);
+                }
+            }, '-=0.4');
 
         // Initialize
         console.log('OmutimaOmugabi Platform Design - Ready!');
