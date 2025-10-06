@@ -243,25 +243,31 @@
             transition: width 0.1s ease;
         }
 
-        /* Reveal Animation Classes */
-        .reveal {
+        /* Reveal Animation Classes - Only hide if JS is enabled */
+        .js-enabled .reveal {
             opacity: 0;
             transform: translateY(50px);
         }
 
-        .reveal-left {
+        .js-enabled .reveal-left {
             opacity: 0;
             transform: translateX(-100px);
         }
 
-        .reveal-right {
+        .js-enabled .reveal-right {
             opacity: 0;
             transform: translateX(100px);
         }
 
-        .reveal-scale {
+        .js-enabled .reveal-scale {
             opacity: 0;
             transform: scale(0.8);
+        }
+
+        /* Fallback: Show content if JS doesn't load */
+        .reveal, .reveal-left, .reveal-right, .reveal-scale {
+            opacity: 1;
+            transform: none;
         }
 
         /* Parallax Layers */
@@ -320,6 +326,9 @@
     </style>
 </head>
 <body class="antialiased">
+
+    <!-- Enable JS-based animations -->
+    <script>document.body.classList.add('js-enabled');</script>
 
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
