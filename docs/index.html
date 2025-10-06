@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmutimaOmugabi - Information Village Limited Proposal</title>
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Animation Library via CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Font Awesome for Icons via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'civ-purple': '#6852a2',
+                        'civ-purple-dark': '#4a3771',
+                        'civ-purple-light': '#8b75c9',
+                        'civ-orange': '#faa92b',
+                        'civ-orange-dark': '#e89310',
+                        'civ-orange-light': '#fbc569',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #6852a2 0%, #4a3771 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6852a2 0%, #faa92b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-pattern {
+            background-color: #6852a2;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23faa92b' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(104, 82, 162, 0.3);
+        }
+
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #faa92b, transparent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-sm shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <div class="h-12 w-12 rounded-full gradient-bg flex items-center justify-center">
+                        <i class="fas fa-heart text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-civ-purple">OmutimaOmugabi</h1>
+                        <p class="text-xs text-gray-600">by Information Village Limited</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#vision" class="text-gray-700 hover:text-civ-purple transition">Vision</a>
+                    <a href="#capabilities" class="text-gray-700 hover:text-civ-purple transition">Capabilities</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-civ-purple transition">Portfolio</a>
+                    <a href="#approach" class="text-gray-700 hover:text-civ-purple transition">Approach</a>
+                    <a href="#contact" class="text-gray-700 hover:text-civ-purple transition">Contact</a>
+                </div>
+                <a href="#contact" class="bg-civ-orange hover:bg-civ-orange-dark text-white px-6 py-2 rounded-full transition font-semibold">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern pt-32 pb-20 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <div class="badge bg-civ-orange/20 text-civ-orange-light mb-6">
+                        <i class="fas fa-star mr-2"></i> Cultural Technology Specialists
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Celebrating Uganda's<br/>
+                        <span class="text-civ-orange">Generous Spirit</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-purple-100 leading-relaxed">
+                        A digital Wall of Fame preserving acts of kindness, care, and community spirit.
+                        More than an app—it's a living archive of Ubuntu philosophy in action.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#capabilities" class="bg-civ-orange hover:bg-civ-orange-dark text-white px-8 py-4 rounded-full font-semibold transition shadow-lg">
+                            <i class="fas fa-rocket mr-2"></i> See Our Capabilities
+                        </a>
+                        <a href="#portfolio" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold transition border-2 border-white/30">
+                            <i class="fas fa-briefcase mr-2"></i> View Portfolio
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative" data-aos="fade-left">
+                    <div class="float-animation">
+                        <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border-2 border-white/20">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2"><i class="fas fa-users text-civ-orange"></i></div>
+                                    <div class="text-3xl font-bold counter">10M+</div>
+                                    <div class="text-sm text-purple-200">Users Served</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2"><i class="fas fa-globe text-civ-orange"></i></div>
+                                    <div class="text-3xl font-bold counter">4</div>
+                                    <div class="text-sm text-purple-200">Countries</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2"><i class="fas fa-building text-civ-orange"></i></div>
+                                    <div class="text-3xl font-bold counter">5+</div>
+                                    <div class="text-sm text-purple-200">Banking Clients</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-5xl mb-2"><i class="fas fa-calendar text-civ-orange"></i></div>
+                                    <div class="text-3xl font-bold counter">9+</div>
+                                    <div class="text-sm text-purple-200">Years Excellence</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute top-20 right-10 opacity-20">
+            <i class="fas fa-heart text-8xl text-civ-orange"></i>
+        </div>
+        <div class="absolute bottom-20 left-10 opacity-20">
+            <i class="fas fa-hands-helping text-8xl text-civ-orange"></i>
+        </div>
+    </section>
+
+    <!-- Vision Statement -->
+    <section id="vision" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Ubuntu Philosophy</span> + International Excellence
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    "I am what I am because of who we all are" — We blend authentic African generosity
+                    traditions with banking-grade technical standards proven across 4 countries.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-16 w-16 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-3xl text-civ-purple"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-civ-purple">Cultural Preservation</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Digital storytelling that honors oral traditions, celebrates non-monetary giving
+                        (time, love, labor, energy, talent), and creates intergenerational knowledge transfer.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-16 w-16 rounded-full bg-civ-orange/10 flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-3xl text-civ-orange"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-civ-purple">Enterprise Security</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Banking-grade security proven through UK FSA compliance, multi-factor authentication,
+                        end-to-end encryption, and GDPR adherence across international deployments.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-16 w-16 rounded-full bg-civ-purple/10 flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-3xl text-civ-purple"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-civ-purple">National Scale</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Proven delivery of platforms serving millions of users with 99.9% uptime,
+                        optimized for low-bandwidth rural access and cross-cultural deployment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Advantages -->
+    <section id="capabilities" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="badge bg-civ-purple/10 text-civ-purple mb-4 mx-auto">
+                    <i class="fas fa-trophy mr-2"></i> Our Competitive Edge
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-civ-purple">
+                    The ONLY Ugandan Firm With
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Unmatched combination of cultural sensitivity and international technical excellence
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-check-circle text-3xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">International Banking Compliance</h3>
+                    <p class="text-purple-100">UK FSA + East African regulations mastery</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-check-circle text-3xl text-civ-purple mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Multi-Country Deployment</h3>
+                    <p class="text-orange-100">4 countries proven track record</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-check-circle text-3xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">National-Scale Platforms</h3>
+                    <p class="text-purple-100">Millions of users served successfully</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-check-circle text-3xl text-civ-purple mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Government Credentials</h3>
+                    <p class="text-orange-100">Uganda Ministry of ICT transformation</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fas fa-check-circle text-3xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Cultural Technology Specialization</h3>
+                    <p class="text-purple-100">Ubuntu philosophy integration expertise</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-civ-orange to-civ-orange-dark text-white rounded-2xl p-6 card-hover" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fas fa-check-circle text-3xl text-civ-purple mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">9+ Years Excellence</h3>
+                    <p class="text-orange-100">Consistent on-time delivery since 2015</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Showcase -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Proven <span class="gradient-text">Track Record</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Real projects, real impact, real results across healthcare, banking, and government sectors
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Project 1: International Banking -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover" data-aos="fade-right">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gradient-to-br from-blue-500 to-blue-700 p-12 flex items-center justify-center">
+                            <i class="fas fa-university text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <div class="badge bg-blue-100 text-blue-700 mb-4">
+                                <i class="fas fa-globe mr-2"></i> International Banking
+                            </div>
+                            <h3 class="text-3xl font-bold mb-4 text-civ-purple">Multi-Country Banking Systems</h3>
+                            <p class="text-gray-600 mb-6 text-lg">
+                                Deployed secure banking interfaces across Uganda, Kenya, Senegal, and United Kingdom
+                                serving 5+ core banking institutions with UK FSA compliance.
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">40%</div>
+                                    <div class="text-sm text-gray-600">Performance Boost</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">4</div>
+                                    <div class="text-sm text-gray-600">Countries</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">5+</div>
+                                    <div class="text-sm text-gray-600">Banks</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">99.5%</div>
+                                    <div class="text-sm text-gray-600">Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Healthcare -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover" data-aos="fade-left">
+                    <div class="md:flex md:flex-row-reverse">
+                        <div class="md:w-1/3 bg-gradient-to-br from-green-500 to-green-700 p-12 flex items-center justify-center">
+                            <i class="fas fa-hospital text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <div class="badge bg-green-100 text-green-700 mb-4">
+                                <i class="fas fa-heartbeat mr-2"></i> National Healthcare
+                            </div>
+                            <h3 class="text-3xl font-bold mb-4 text-civ-purple">Ethiopia Health-Pay Platform</h3>
+                            <p class="text-gray-600 mb-6 text-lg">
+                                Nationwide digital health payment system for Ethiopia's Ministry of Health enabling
+                                CBHI enrollment, premium collection, and claims processing for millions of citizens.
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">Millions</div>
+                                    <div class="text-sm text-gray-600">Citizens Served</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">National</div>
+                                    <div class="text-sm text-gray-600">Scale</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">HIPAA</div>
+                                    <div class="text-sm text-gray-600">Compliant</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">2025</div>
+                                    <div class="text-sm text-gray-600">Deployed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Government -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden card-hover" data-aos="fade-right">
+                    <div class="md:flex">
+                        <div class="md:w-1/3 bg-gradient-to-br from-civ-purple to-civ-purple-dark p-12 flex items-center justify-center">
+                            <i class="fas fa-landmark text-8xl text-white opacity-50"></i>
+                        </div>
+                        <div class="md:w-2/3 p-8 md:p-12">
+                            <div class="badge bg-purple-100 text-civ-purple mb-4">
+                                <i class="fas fa-flag mr-2"></i> Government Digital Transformation
+                            </div>
+                            <h3 class="text-3xl font-bold mb-4 text-civ-purple">Uganda Ministry of ICT Platform</h3>
+                            <p class="text-gray-600 mb-6 text-lg">
+                                Digital transformation platform serving 2,000+ government employees with role-based
+                                access controls and cross-departmental API integration.
+                            </p>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">60%</div>
+                                    <div class="text-sm text-gray-600">Efficiency Gain</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">2,000+</div>
+                                    <div class="text-sm text-gray-600">Users</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">100%</div>
+                                    <div class="text-sm text-gray-600">On-Time</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-civ-purple">Gov</div>
+                                    <div class="text-sm text-gray-600">Grade Security</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Approach -->
+    <section id="approach" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Our <span class="gradient-text">Technical Approach</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Enterprise-grade architecture designed for cultural preservation and national scale
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div data-aos="fade-right">
+                    <h3 class="text-3xl font-bold mb-6 text-civ-purple">Platform Features</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-cloud-upload-alt text-civ-orange"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Multi-Media Uploads</h4>
+                                <p class="text-gray-600">Image & video support with virus scanning and bandwidth optimization</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-users text-civ-orange"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Community Validation</h4>
+                                <p class="text-gray-600">Local community confirmation of generosity acts</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-share-alt text-civ-orange"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Social Integration</h4>
+                                <p class="text-gray-600">WhatsApp, Facebook, X, Instagram sharing</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-trophy text-civ-orange"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Cultural Gamification</h4>
+                                <p class="text-gray-600">Ubuntu-aligned badges and community recognition</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-orange/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-chart-bar text-civ-orange"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Analytics Engine</h4>
+                                <p class="text-gray-600">Philanthropy patterns and demographic insights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left">
+                    <h3 class="text-3xl font-bold mb-6 text-civ-purple">Security & Compliance</h3>
+                    <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark text-white rounded-3xl p-8">
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-shield-alt text-2xl text-civ-orange"></i>
+                                <div>
+                                    <div class="font-bold">Uganda Data Protection Act</div>
+                                    <div class="text-sm text-purple-200">Full compliance implementation</div>
+                                </div>
+                            </div>
+                            <div class="section-divider"></div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-lock text-2xl text-civ-orange"></i>
+                                <div>
+                                    <div class="font-bold">Banking-Grade Security</div>
+                                    <div class="text-sm text-purple-200">UK FSA proven standards</div>
+                                </div>
+                            </div>
+                            <div class="section-divider"></div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-globe text-2xl text-civ-orange"></i>
+                                <div>
+                                    <div class="font-bold">GDPR Compliance</div>
+                                    <div class="text-sm text-purple-200">International data protection</div>
+                                </div>
+                            </div>
+                            <div class="section-divider"></div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-server text-2xl text-civ-orange"></i>
+                                <div>
+                                    <div class="font-bold">Multi-Cloud Architecture</div>
+                                    <div class="text-sm text-purple-200">Firebase + AWS + Azure redundancy</div>
+                                </div>
+                            </div>
+                            <div class="section-divider"></div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-sync text-2xl text-civ-orange"></i>
+                                <div>
+                                    <div class="font-bold">99.9% Uptime SLA</div>
+                                    <div class="text-sm text-purple-200">Geo-distributed backups</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="bg-gray-50 rounded-3xl p-8 md:p-12" data-aos="fade-up">
+                <h3 class="text-3xl font-bold mb-8 text-center text-civ-purple">120-Day Delivery Timeline</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="h-20 w-20 rounded-full bg-civ-purple text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                        <h4 class="font-bold mb-2">Foundation</h4>
+                        <p class="text-sm text-gray-600 mb-2">30 Days</p>
+                        <p class="text-xs text-gray-500">Inception, UX/UI Design, Architecture</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="h-20 w-20 rounded-full bg-civ-orange text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                        <h4 class="font-bold mb-2">Development</h4>
+                        <p class="text-sm text-gray-600 mb-2">60 Days</p>
+                        <p class="text-xs text-gray-500">MVP, Core Features, Testing</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="h-20 w-20 rounded-full bg-civ-purple text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                        <h4 class="font-bold mb-2">Integration</h4>
+                        <p class="text-sm text-gray-600 mb-2">20 Days</p>
+                        <p class="text-xs text-gray-500">Final Platform, Admin Dashboard</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="h-20 w-20 rounded-full bg-civ-orange text-white flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+                        <h4 class="font-bold mb-2">Launch</h4>
+                        <p class="text-sm text-gray-600 mb-2">10 Days</p>
+                        <p class="text-xs text-gray-500">Deployment, Training, Documentation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Why Information Village Limited
+                </h2>
+                <p class="text-xl text-purple-100 max-w-3xl mx-auto">
+                    The perfect convergence of Ubuntu philosophy and international technical excellence
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-award text-5xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Cultural Expertise</h3>
+                    <p class="text-purple-100">Deep understanding of African generosity traditions and Ubuntu philosophy</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-certificate text-5xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">International Standards</h3>
+                    <p class="text-purple-100">UK FSA compliance and multi-jurisdictional regulatory expertise</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-rocket text-5xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Proven Delivery</h3>
+                    <p class="text-purple-100">9+ years of consistent on-time delivery with 100% project success rate</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-users-cog text-5xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">National Scale Experience</h3>
+                    <p class="text-purple-100">Successfully served millions of users across healthcare and government</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fas fa-handshake text-5xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Community-Centered</h3>
+                    <p class="text-purple-100">Platforms designed to strengthen community bonds and social capital</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border-2 border-white/20" data-aos="zoom-in" data-aos-delay="600">
+                    <i class="fas fa-life-ring text-5xl text-civ-orange mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Comprehensive Support</h3>
+                    <p class="text-purple-100">24/7 technical support with 6-month maintenance and 99.9% uptime SLA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                        Let's Build <span class="gradient-text">OmutimaOmugabi</span> Together
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Partner with Cultural Technology Specialists who combine deep Ubuntu philosophy
+                        understanding with international banking-grade excellence.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-envelope text-civ-purple"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-lg">Email</div>
+                                <a href="mailto:info@informationvillagelimited.com" class="text-civ-purple hover:text-civ-purple-dark">
+                                    info@informationvillagelimited.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-phone text-civ-purple"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-lg">Phone</div>
+                                <a href="tel:+256773185503" class="text-civ-purple hover:text-civ-purple-dark">
+                                    +256 773 185 503
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-civ-purple"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-lg">Location</div>
+                                <div class="text-gray-600">Parliament Avenue, Kampala, Uganda</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="h-12 w-12 rounded-full bg-civ-purple/10 flex items-center justify-center flex-shrink-0">
+                                <i class="fab fa-linkedin text-civ-purple"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-lg">LinkedIn</div>
+                                <a href="https://ug.linkedin.com/company/information-village-ivilleinc" target="_blank" class="text-civ-purple hover:text-civ-purple-dark">
+                                    Information Village Limited
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-civ-purple to-civ-purple-dark rounded-3xl p-8 md:p-12 text-white" data-aos="fade-left">
+                    <h3 class="text-3xl font-bold mb-6">Technical Lead</h3>
+                    <div class="space-y-4 mb-8">
+                        <div>
+                            <div class="text-2xl font-bold">Echeru Rodney</div>
+                            <div class="text-purple-200">Founder & Technical Lead</div>
+                        </div>
+                        <div class="section-divider"></div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-civ-orange"></i>
+                                <a href="mailto:rodneyecheru@gmail.com" class="hover:text-civ-orange transition">
+                                    rodneyecheru@gmail.com
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone text-civ-orange"></i>
+                                <a href="tel:+256705283258" class="hover:text-civ-orange transition">
+                                    +256 705 283 258
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fab fa-linkedin text-civ-orange"></i>
+                                <a href="https://www.linkedin.com/in/echeru-rodney" target="_blank" class="hover:text-civ-orange transition">
+                                    linkedin.com/in/echeru-rodney
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fab fa-github text-civ-orange"></i>
+                                <a href="https://github.com/RodneyEcheru" target="_blank" class="hover:text-civ-orange transition">
+                                    github.com/RodneyEcheru
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/10 rounded-2xl p-6 border-2 border-white/20">
+                        <div class="text-sm text-purple-200 mb-2">10+ Years Experience</div>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>✓ International Banking</div>
+                            <div>✓ National Healthcare</div>
+                            <div>✓ Government Digital</div>
+                            <div>✓ Enterprise Security</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="h-12 w-12 rounded-full gradient-bg flex items-center justify-center">
+                            <i class="fas fa-heart text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">OmutimaOmugabi</h3>
+                            <p class="text-sm text-gray-400">Proposal by Information Village</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Cultural Technology Specialists combining Ubuntu philosophy with international excellence.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="#vision" class="block text-gray-400 hover:text-civ-orange transition">Vision</a>
+                        <a href="#capabilities" class="block text-gray-400 hover:text-civ-orange transition">Capabilities</a>
+                        <a href="#portfolio" class="block text-gray-400 hover:text-civ-orange transition">Portfolio</a>
+                        <a href="#approach" class="block text-gray-400 hover:text-civ-orange transition">Approach</a>
+                        <a href="#contact" class="block text-gray-400 hover:text-civ-orange transition">Contact</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Company Info</h4>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div>Established: 2015</div>
+                        <div>9+ Years of Excellence</div>
+                        <div>4 Countries Deployment</div>
+                        <div>10M+ Users Served</div>
+                        <div>99.9% Uptime Achievement</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 Information Village Limited. All rights reserved. | Proposal Validity: 90 days</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize AOS -->
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 30);
+        }
+
+        // Observe counter elements
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent.replace(/\D/g, '')) || 0;
+                        if (target > 0) {
+                            animateCounter(counter, target);
+                        }
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            counterObserver.observe(counter.closest('section') || counter);
+        });
+    </script>
+</body>
+</html>
